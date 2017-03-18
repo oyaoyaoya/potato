@@ -1,0 +1,7 @@
+<h1>やり取り画面</h1>
+<p>メッセージを送りましょう！</p>
+<ul id="message_ul">
+  <%= render 'body' %>
+</ul>
+<%= render 'form' %>
+<%= link_to "取引完了", contract_path(@contract.id), method: :patch %>

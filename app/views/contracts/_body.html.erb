@@ -1,0 +1,4 @@
+<% @messages.each do |message| %>
+  <li class="message_li_name"><%= message.user.name %></li>
+  <li class="message_li_body"><%= message.body %></li>
+<% end %>

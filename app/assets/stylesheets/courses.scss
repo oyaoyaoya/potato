@@ -1,0 +1,22 @@
+.Course__show__item_show{
+  // background-color: whitel
+  // background-color: gray;
+  margin-top: 20px;
+  &--img{
+    // background-color: red;
+    img{
+      margin: 30px 40px;
+    }
+  }
+  &--description{
+    // background-color: blue;
+    table{
+      margin-top: 50px;
+    }
+  }
+  &--link{
+    a{
+      float: right;
+    }
+  }
+}

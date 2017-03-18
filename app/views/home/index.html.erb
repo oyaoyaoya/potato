@@ -1,2 +1,10 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Topページ</h1>
+<p>あなたの学部の授業を探す</p>
+<p>出品中のアイテム<%= @items.count %>個</p>
+<ul>
+<% @user_oriented_course.each do | course |%>
+　　<%= link_to course_path(course) do %>
+      <li><%= course.name %></li>
+   <% end %>
+<% end %>
+</ul>

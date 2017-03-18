@@ -1,0 +1,11 @@
+<h4>出品詳細</h4>
+<ul>
+  <li><%= @item.name %></li>
+  <li><%= @item.price %></li>
+  <li><%= @item.status_i18n %></li>
+</ul>
+<% if @item.contract == false %>
+  <%= link_to "購入する", contract_path, method: :post %>
+<% else %>
+  <p>購入済み</p>
+<% end %>

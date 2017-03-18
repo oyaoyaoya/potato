@@ -1,0 +1,54 @@
+<h5><i class="material-icons">mode_edit</i><%= @course.name %></h5>
+<% @items.each do |textbook_id, items| %>
+<div clss="row">
+  <div class="col l6 Course__show__item_show hoverable">
+    <div class="row">
+      <div class="col l2 Course__show__item_show--img">
+        <%= image_tag("textbook.jpg", class: "responsive-img") %>
+      </div>
+      <div class="col l1"></div>
+      <div class="col l9 Course__show__item_show--description">
+        <table class="bordered striped">
+          <thead></thead>
+          <tbody>
+            <tr>
+            <th>書籍名</th>
+            <td><%= items.last.textbook.name %></td>
+            </tr>
+            <tr>
+            <th>詳細</th>
+            <td><%= items.last.textbook.explanation %></td>
+            </tr>
+            <tr>
+            <th>価格</th>
+            <td><%= items.last.textbook.price %>円</td>
+            </tr>
+            <tr>
+            <th>出品平均価格</th>
+            <td><%= items.inject(0){|r, i| r+=i.price}/items.size %>円</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l12 Course__show__item_show--list">
+        <div class="col s12">
+          <% items.last(5).each do |item| %>
+          <div class="collection">
+            <%= link_to item_path(item), class:"collection-item" do %>
+            <%= item.price%>円
+            <%= item_tag(item) %>
+            <%= item_link(item) %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+        <div class="col l12 Course__show__item_show--link">
+          <%= link_to "....もっと見る", textbook_items_path(textbook_id) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

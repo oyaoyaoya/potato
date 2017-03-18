@@ -1,0 +1,20 @@
+<!-- 何のページなのか？
+ユーザーの持っているやり取り一欄があるページ。そこからやり取りに飛ぶ。
+-->
+<h1>やり取り一欄</h1>
+<div class="row">
+  <div class="col l4">
+    <% @contracts.each do |contract| %>
+    <div class="collection">
+      <%= link_to contract_path(contract), class:"collection-item" do %>
+      <%= message_tag(contract) %>
+      <%= contract.item.name %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<h1>プロフィール編集</h1>

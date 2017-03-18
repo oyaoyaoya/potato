@@ -1,3 +1,14 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#side-bar{
+  background-color: #78909c;
+  height: 100vh;
+}
+.nav-right{
+  float: right;
+}
+
+nav{
+  color: black;
+  a{
+    color: black;
+  }
+}

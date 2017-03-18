@@ -1,0 +1,5 @@
+<%= form_for(@message, url: { controller: "messages", action: "create"}, html: { id: "message_form"}) do |f| %>
+  <%= f.text_field :body, id: "message_field"%>
+  <%= f.hidden_field :contract_id %>
+  <%= f.submit "送信する" %>
+<% end %>

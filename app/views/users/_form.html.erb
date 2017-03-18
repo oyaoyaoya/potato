@@ -1,0 +1,25 @@
+<%= form_for(@user) do |f|%>
+    <div class="input-field">
+      <%= f.label :name %>
+      <%= f.text_field :name, class:"validate" %>
+    </div>
+    <div class="input-field" id="school_form">
+      <%= f.collection_select :school_id, School.all, :id, :name %>
+      <label>大学を選択してください。</label>
+    </div>
+
+    <div class="input-field" id="faculty_form">
+      <%= render partial: 'faculties', locals: { school_id: School.first.id } %>
+      <label>学部を選択してください。</label>
+    </div>
+
+    <div class="input-field" id="department_form">
+      <%= render partial: 'departments', locals: { faculty_id: Faculty.first.id} %>
+      <label>学科を選択してください。</label>
+    </div>
+    <%= f.hidden_field :faculty_id %>
+    <%= f.hidden_field :department_id %>
+    <div>
+      <%= f.submit class:"waves-effect waves-light btn"%>
+    </div>
+<% end %>

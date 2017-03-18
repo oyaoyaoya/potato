@@ -1,0 +1,15 @@
+<h4>出品一欄</h4>
+<h5><%= @textbook.name %></h5>
+<div class="row">
+  <div class="col s12">
+    <% @items.each do |item| %>
+    <div class="collection">
+      <%= link_to item_path(item), class:"collection-item" do %>
+      <%= item.price%>円
+      <%= item_tag(item) %>
+      <%= item_link(item) %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>

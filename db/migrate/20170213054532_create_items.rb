@@ -5,12 +5,14 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :price
       t.integer :status
-      t.text :explanation
+      t.references :textbook, foreign_key: true
       t.references :courses, foreign_key: true
       t.boolean   :purchased, default: false
-      t.boolean   :contract
+      t.boolean   :contract, default: false
+      t.references :seller
 
       t.timestamps
     end
+    add_foreign_key :items, :users, column: :seller_id
   end
 end
