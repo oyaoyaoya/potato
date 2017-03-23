@@ -6,7 +6,7 @@ module UsersHelper
       content_string << content_tag( :span, "", class:"new badge")
     else
       if message.user_id == current_user.id
-        content_string << content_tag( :span, "済み", class:"badge")
+        content_string << content_tag( :span, "メッセージ済み", class:"badge")
       else
         content_string << content_tag( :span, "", class:"new badge")
       end

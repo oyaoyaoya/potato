@@ -5,15 +5,14 @@ $primary-color: color( "amber", "darken-1") !default;
 $secondary-color: color("gray", "darken-1") !default;
 $link-color: color("light-blue", "darken-1") !default;
 @import "materialize";
+@import "common/*";
+@import "module/*";
+@import "materialize/components/forms/forms";
+@import "materialize/components/mixins";
+@import "materialize/components/color";
+@import "materialize/components/variables";
 @import "home";
 @import "items";
 @import "courses";
 @import "layout";
-@import "common/*";
-@import "materialize/components/forms/forms";
-
-@import "materialize/components/mixins";
-@import "materialize/components/color";
-
-
-@import "materialize/components/variables";
+@import "Messages";

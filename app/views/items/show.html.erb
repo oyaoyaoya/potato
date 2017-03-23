@@ -1,11 +1,48 @@
 <h4>出品詳細</h4>
-<ul>
-  <li><%= @item.name %></li>
-  <li><%= @item.price %></li>
-  <li><%= @item.status_i18n %></li>
-</ul>
-<% if @item.contract == false %>
-  <%= link_to "購入する", contract_path, method: :post %>
-<% else %>
-  <p>購入済み</p>
-<% end %>
+<div clss="row">
+  <div class="col l6 Course__show__item_show">
+    <h5><i class="material-icons"></i><%= @item.course.name %></h5>
+    <div class="row">
+      <div class="col l2 Course__show__item_show--img">
+        <%= image_tag("textbook.jpg", class: "center-align responsive-img") %>
+      </div>
+      <div class="col l1"></div>
+      <div class="col l9 Course__show__item_show--description">
+        <table class="bordered striped">
+          <thead></thead>
+          <tbody>
+            <tr>
+            <th>書籍名</th>
+            <td><%= @item.textbook.name %></td>
+            </tr>
+            <tr>
+            <th>価格</th>
+            <td><%= @item.price %>円</td>
+            </tr>
+            <tr>
+            <th>状態</th>
+            <td><%= @item.status_i18n %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l12 Course__show__item_show--list">
+        <div class="col s12">
+          <% if @item.purchased == false %>
+            <%= link_to contract_path, method: :post, class:"btn waves-effect waves-light", data:{confirm: '購入しますか？', disable_with: "通信中"} do%>
+            　購入する
+              <i class="material-icons right">send</i>
+            <% end %>
+          <% else %>
+            <p class="btn waves-effect grey waves-light">購入済み</p>
+          <% end %>
+        </div>
+        <div class="col l12 Course__show__item_show--link">
+          <%= link_to "アイテム一覧に戻る", course_path(@item.course.id) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

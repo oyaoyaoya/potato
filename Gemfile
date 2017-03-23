@@ -39,6 +39,7 @@ gem 'faker'
 gem 'materialize-sass'
 gem 'devise-i18n'
 gem 'enum_help'
+gem 'font-awesome-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,10 +1,12 @@
+<% provide :header, "授業詳細 | #{@course.name}" %>
 <h5><i class="material-icons">mode_edit</i><%= @course.name %></h5>
 <% @items.each do |textbook_id, items| %>
 <div clss="row">
-  <div class="col l6 Course__show__item_show hoverable">
+  <div class="col l12 Course__show__item_show">
     <div class="row">
       <div class="col l2 Course__show__item_show--img">
         <%= image_tag("textbook.jpg", class: "responsive-img") %>
+        <%= link_to "出品する", new_textbook_item_path(textbook_id), class:"waves-effect waves-light btn btn_hr_center"%>
       </div>
       <div class="col l1"></div>
       <div class="col l9 Course__show__item_show--description">
@@ -34,21 +36,18 @@
     <div class="row">
       <div class="col l12 Course__show__item_show--list">
         <div class="col s12">
-          <% items.last(5).each do |item| %>
+          <% items.each do |item| %>
           <div class="collection">
             <%= link_to item_path(item), class:"collection-item" do %>
             <%= item.price%>円
             <%= item_tag(item) %>
-            <%= item_link(item) %>
             <% end %>
           </div>
           <% end %>
-        </div>
-        <div class="col l12 Course__show__item_show--link">
-          <%= link_to "....もっと見る", textbook_items_path(textbook_id) %>
         </div>
       </div>
     </div>
   </div>
 </div>
 <% end %>
+<%= link_to "学部授業一覧に戻る", courses_path %>

@@ -4,7 +4,7 @@ class CreateTextbooks < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :price
       t.text :explanation
-      t.references :courses, foreign_key: true
+      t.references :course, foreign_key: true
 
 
       t.timestamps

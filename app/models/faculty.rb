@@ -1,4 +1,6 @@
 class Faculty < ApplicationRecord
   belongs_to :school
-  belongs_to :source_faculty
+  
+  has_many   :departments
+  has_many   :courses
 end

@@ -11,36 +11,54 @@
   </head>
   <body>
     <header>
+      <% if user_signed_in? %>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">SideNav</a></div>
+          <div class="nav-wrapper"><strong><%= yield :header %></strong></div>
         </div>
       </nav>
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo clearfix"><a id="logo-container center-align" href="/" class="brand-logo">
-          <%= image_tag("icon.jpg", size: "200x200", class:"responsive-img center-align logo-img") %>
+          <div>
+            <%= image_tag("icon.jpg", size: "200x200", class:"responsive-img center-align logo-img") %>
+          </div>
         </a>
         </li>
         <li class="search">
           <div class="search-wrapper card">
-            <input id="serch_course_field"><i class="material-icons">search</i>
-            <div class="search-results"id="course_result"></div>
+            <input id="search_course_field"><i class="material-icons">search</i>
+            <div class="search-results"id="course_result">
+            </div>
           </div>
         </li>
-        <!-- <li class="user"><a href="#!">First Sidebar Link</a></li>
-        <li><a href="#!">Second Sidebar Link</a></li> -->
+        <li><div class="divider"></div></li>
+        <li>
+          <%= link_to "やり取り一覧", user_path(current_user) %>
+        </li>
+        <li><div class="divider"></div></li>
+        <li>
+          <%= link_to "やり取り一覧", user_path(current_user) %>
+        </li>
+        <li>
+          <%= link_to "出品一覧", sold_list_users_path %>
+        </li>
+        <li>
+          <%= link_to "購入一覧", bought_list_users_path %>
+        </li>
       </ul>
+      <% end %>
     </header>
     <main>
-      <dib class="container">
+      <p class="alert alert--success"><%= notice %></p>
+      <p class="alert alert--danger"><%= alert %></p>
+      <div class="conainer">
         <div class="row">
-          <div class="col s12 m11 l11" id="main-body">
-              <p class="notice"><%= notice %></p>
-              <p class="alert"><%= alert %></p>
+          <div class="col s12 m12 l12" id="main-body">
+
               <%= yield %>
           </div>
         </div>
-      </dib>
+      </div>
     </main>
   </body>
   <footer class="page-footer">

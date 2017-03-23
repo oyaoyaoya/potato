@@ -1,4 +1,5 @@
-<% @messages.each do |message| %>
-  <li class="message_li_name"><%= message.user.name %></li>
-  <li class="message_li_body"><%= message.body %></li>
+<% Array(@messages).each do |message| %>
+  <li class="message_li_body <%= message.user.id == current_user.id ? "right-msg right-align" : "left-msg left-align" %>">
+    <%= simple_format(h(message.body), class: "msg-body") %>
+  </li>
 <% end %>

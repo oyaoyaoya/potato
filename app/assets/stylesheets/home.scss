@@ -1,14 +1,23 @@
-#side-bar{
-  background-color: #78909c;
-  height: 100vh;
-}
-.nav-right{
-  float: right;
-}
+@import "common/color";
 
-nav{
-  color: black;
+.Search_course{
+  height: calc(100vh - 64px);
+  background-color: white;
+  padding: 0 0;
+  input{
+    width: 50%;
+  }
+  label{
+    text-align: justify;
+  }
+  &__text_field{
+    &__wrap{
+      width: 100%;
+    }
+  }
+}
+#course_result2{
   a{
-    color: black;
+    color: #26a69a;
   }
 }

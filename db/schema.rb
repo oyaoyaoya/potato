@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318024302) do
+ActiveRecord::Schema.define(version: 20170323071735) do
 
   create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "item_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170318024302) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "status",       default: 0, null: false
+    t.integer  "complete_id"
     t.index ["item_id"], name: "index_contracts_on_item_id", using: :btree
     t.index ["purchaser_id"], name: "index_contracts_on_purchaser_id", using: :btree
     t.index ["seller_id"], name: "index_contracts_on_seller_id", using: :btree
@@ -26,53 +27,37 @@ ActiveRecord::Schema.define(version: 20170318024302) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
+    t.integer  "faculty_id"
+    t.integer  "department_id"
+    t.integer  "school_id"
     t.integer  "text_presence", limit: 1, default: 0, null: false
-    t.integer  "period",        limit: 1, default: 0, null: false
-    t.integer  "day",           limit: 1, default: 0, null: false
+    t.bigint   "period",                  default: 0, null: false
+    t.bigint   "day",                     default: 0, null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "professor_id"
+    t.index ["department_id"], name: "index_courses_on_department_id", using: :btree
+    t.index ["faculty_id"], name: "index_courses_on_faculty_id", using: :btree
     t.index ["professor_id"], name: "index_courses_on_professor_id", using: :btree
-  end
-
-  create_table "department_and_courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "department_id"
-    t.integer  "course_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["course_id"], name: "index_department_and_courses_on_course_id", using: :btree
-    t.index ["department_id"], name: "index_department_and_courses_on_department_id", using: :btree
+    t.index ["school_id"], name: "index_courses_on_school_id", using: :btree
   end
 
   create_table "departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "school_id"
-    t.integer  "source_department_id"
-    t.string   "name"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
     t.integer  "faculty_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["faculty_id"], name: "index_departments_on_faculty_id", using: :btree
     t.index ["school_id"], name: "index_departments_on_school_id", using: :btree
-    t.index ["source_department_id"], name: "index_departments_on_source_department_id", using: :btree
   end
 
   create_table "faculties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "school_id"
-    t.integer  "source_faculty_id"
     t.string   "name"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["school_id"], name: "index_faculties_on_school_id", using: :btree
-    t.index ["source_faculty_id"], name: "index_faculties_on_source_faculty_id", using: :btree
-  end
-
-  create_table "faculty_and_courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "faculty_id"
-    t.integer  "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_faculty_and_courses_on_course_id", using: :btree
-    t.index ["faculty_id"], name: "index_faculty_and_courses_on_faculty_id", using: :btree
+    t.index ["school_id"], name: "index_faculties_on_school_id", using: :btree
   end
 
   create_table "item_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -101,7 +86,7 @@ ActiveRecord::Schema.define(version: 20170318024302) do
     t.integer  "status"
     t.integer  "textbook_id"
     t.integer  "course_id"
-    t.boolean  "contract",    default: false
+    t.boolean  "purchased",   default: false
     t.integer  "seller_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -137,18 +122,6 @@ ActiveRecord::Schema.define(version: 20170318024302) do
     t.integer  "school_type", limit: 1, default: 0, null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-  end
-
-  create_table "source_departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "source_faculties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "textbooks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -191,6 +164,7 @@ ActiveRecord::Schema.define(version: 20170318024302) do
     t.integer  "school_id"
     t.integer  "department_id"
     t.integer  "faculty_id"
+    t.integer  "grade"
     t.string   "name"
     t.index ["department_id"], name: "index_users_on_department_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -202,16 +176,13 @@ ActiveRecord::Schema.define(version: 20170318024302) do
   add_foreign_key "contracts", "items"
   add_foreign_key "contracts", "users", column: "purchaser_id"
   add_foreign_key "contracts", "users", column: "seller_id"
+  add_foreign_key "courses", "departments"
+  add_foreign_key "courses", "faculties"
   add_foreign_key "courses", "professors"
-  add_foreign_key "department_and_courses", "courses"
-  add_foreign_key "department_and_courses", "departments"
+  add_foreign_key "courses", "schools"
   add_foreign_key "departments", "faculties"
   add_foreign_key "departments", "schools"
-  add_foreign_key "departments", "source_departments"
   add_foreign_key "faculties", "schools"
-  add_foreign_key "faculties", "source_faculties"
-  add_foreign_key "faculty_and_courses", "courses"
-  add_foreign_key "faculty_and_courses", "faculties"
   add_foreign_key "item_comments", "items"
   add_foreign_key "item_comments", "users"
   add_foreign_key "item_likes", "items"

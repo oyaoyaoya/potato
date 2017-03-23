@@ -1,7 +1,11 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %w( show )
+  def index
+    @faculty = current_user.faculty
+    @courses = Course.where(faculty_id: @faculty.id, school_id: current_user.school.id)
+  end
   def show
-    @items = Item.where(same_as_course).group_by{|i| i.textbook_id}
+    @items = Item.where(same_as_course).order(:purchased).group_by{|i| i.textbook_id}
     @textbooks = Textbook.where(same_as_course)
   end
   def search

@@ -1,7 +1,33 @@
-<h1>やり取り画面</h1>
-<p>メッセージを送りましょう！</p>
-<ul id="message_ul">
-  <%= render 'body' %>
-</ul>
-<%= render 'form' %>
-<%= link_to "取引完了", contract_path(@contract.id), method: :patch %>
+<% provide :header, "やり取り画面" %>
+<div class="row">
+  <div class="col l3">
+  </div>
+  <div class="col l6">
+    <div class="col l10">
+      <ul class="collection">
+        <li class="collection-item avatar">
+          <%= image_tag("icon.png", class:"circle") %>
+          <span class="title"><%= user_name(@contract) %>さん</span>
+          <p><%= @contract.item.name %><br>
+             <%= @contract.item.price %>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div class="col l2">
+      <p>
+        <%= link_to "完了", contract_path(@contract.id), method: :patch, class:"waves-effect waves-light btn btn_vr_center #{ complete_status(@contract)} " %>
+      </p>
+    </div>
+    <div class="col l12  Message__body">
+      <ul id="message_ul">
+        <%= render 'body' %>
+      </ul>
+    </div>
+    <div class="col l12 Message__footer">
+      <%= render 'form' %>
+    </div>
+  </div>
+  <div class="col l3">
+  </div>
+</div>

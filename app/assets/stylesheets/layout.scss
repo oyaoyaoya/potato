@@ -18,6 +18,11 @@ header, main, footer {
        padding-left: 0;
      }
    }
+   @media only screen and (min-width: 993px){
+     .container {
+      width: 80%;
+     }
+   }
 .clearfix{
   display: table;
   content: "";
@@ -29,6 +34,9 @@ header, main, footer {
   padding: 0 20px;
   &img{
     text-align: center;
+  }
+  a:hover{
+    background-color: white;
   }
 }
 .logo{
@@ -60,7 +68,7 @@ header, main, footer {
   margin-top: 1px;
   padding: 1px 0 0 0;
 }
-#serch_course_field{
+#search_course_field{
     display: block;
     font-size: 16px;
     font-weight: 300;
@@ -73,5 +81,20 @@ header, main, footer {
 .side-nav{
   a#logo-container:hover{
     background-color: transparent;
+  }
+}
+
+.alert{
+  line-height: 30px;
+  list-style: 30px;
+  font-weight: 200;
+  text-align: center;
+  color: #fff;
+  margin-top: -15px;
+  &--success{
+    background-color: #38aef0;
+  }
+  &--danger{
+    background-color: #d65f4c;
   }
 }

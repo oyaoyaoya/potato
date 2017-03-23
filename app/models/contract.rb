@@ -1,5 +1,5 @@
 class Contract < ApplicationRecord
-  enum status: { uncompleted: 0, completed: 1 }
+  enum status: { uncompleted: 0, pre_completed: 1, completed: 2}
   belongs_to :item
   belongs_to :user
   has_many :messages

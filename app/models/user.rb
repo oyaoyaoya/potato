@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :contracts
   has_many :messages
   has_many :items
+  belongs_to :school
+  belongs_to :faculty
+  belongs_to :department
 end

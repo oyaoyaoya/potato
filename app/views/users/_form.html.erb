@@ -17,9 +17,18 @@
       <%= render partial: 'departments', locals: { faculty_id: Faculty.first.id} %>
       <label>学科を選択してください。</label>
     </div>
+    <div class="input-field1">
+      <label for="price">学年</label>
+      <div class="col s12">
+        <%= f.radio_button :grade, 1, class:"with-gap" %><%= f.label :grade_1, "1年" %>
+        <%= f.radio_button :grade, 2, class:"with-gap" %><%= f.label :grade_2, "2年" %>
+        <%= f.radio_button :grade, 3, class:"with-gap" %><%= f.label :grade_3, "3年" %>
+        <%= f.radio_button :grade, 4, class:"with-gap" %><%= f.label :grade_4, "4年" %>
+      </div>
+    </div>
     <%= f.hidden_field :faculty_id %>
     <%= f.hidden_field :department_id %>
-    <div>
-      <%= f.submit class:"waves-effect waves-light btn"%>
-    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+    </button>
 <% end %>

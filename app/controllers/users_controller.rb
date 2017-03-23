@@ -2,15 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: %w( edit update)
 
   def show
-
-    # カラム内でかつ検索が有る恥ず
-    @contracts = Contract.where(seller_id: 99).or(Contract.where(purchaser_id: 99))
-    # a = Contract.where(purchaser_id: current_user)
-    # b = Contract.where(seller_id: current_user)
-    # c.messages.last.user.id
-    #
-    # c = a + b
+    @contracts = Contract.where(seller_id: current_user.id).or(Contract.where(purchaser_id: current_user.id))
   end
+
   def edit
     @schools = School.all
     @faculties = Faculty.all
@@ -36,6 +30,17 @@ class UsersController < ApplicationController
     if request.xhr?
       render partial: 'departments', locals: {faculty_id: params[:faculty_id]}
     end
+  end
+
+  def sold_list
+    @items = Item.where(seller_id: current_user.id)
+  end
+
+  def bought_list
+    # 購入アイテムの一覧が欲しい
+    # Contractのpurchaser_idがcurrent_userのものの一覧を所得
+    # item_idの一覧を所得する
+    @items = Item.includes(:contract).where(contracts: {purchaser_id: current_user.id })
   end
 
   private

@@ -1,7 +1,8 @@
 function buildHTML(message){
   var html = $(`
-    <li class="message_li_name">${message.name}</li>
-    <li class="message_li_body">${message.body}</li>
+    <li class="message_li_body right-msg right-align">
+    <p class="msg-body">${message.body}</p>
+    </li>
     `)
     return html
 };

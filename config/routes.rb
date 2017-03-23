@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     collection do
       get :faculty_select
       get :department_select
+      get :sold_list
+      get :bought_list
     end
   end
   resources :courses, only: %w{ show index } do

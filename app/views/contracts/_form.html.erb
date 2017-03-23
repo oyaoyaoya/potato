@@ -1,5 +1,11 @@
-<%= form_for(@message, url: { controller: "messages", action: "create"}, html: { id: "message_form"}) do |f| %>
-  <%= f.text_field :body, id: "message_field"%>
+<div class="row">
+  <%= form_for(@message, url: { controller: "messages", action: "create"}, html: { id: "message_form"}) do |f| %>
   <%= f.hidden_field :contract_id %>
-  <%= f.submit "送信する" %>
-<% end %>
+  <div class="col l11">
+    <%= f.text_area :body, id: "message_field" , class:"materialize-textarea"%>
+  </div>
+  <div class="col l1">
+    <%= f.submit "送信する", class:"waves-effect waves-light btn btn_vr_center" %>
+  </div>
+  <% end %>
+</div>

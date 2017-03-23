@@ -1,10 +1,64 @@
-<h1>Topページ</h1>
-<p>あなたの学部の授業を探す</p>
-<p>出品中のアイテム<%= @items.count %>個</p>
-<ul>
-<% @user_oriented_course.each do | course |%>
-　　<%= link_to course_path(course) do %>
-      <li><%= course.name %></li>
-   <% end %>
+<% provide :header, "TOP" %>
+<div class="row">
+  <div class="col l12 Search_course valign-wrapper">
+    <div class="valign center Search_course__text_field__wrap input-field">
+        <h3>教科書をフリマに！</h3>
+        <input id="search_course_field2" type="text" class="validate" placeholder="授業名で検索">
+        <div id="course_result2">
+        </div>
+    </div>
+  </div>
+</div>
+<h4><%= current_user.faculty.name %>の授業を探す</h4>
+<% @courses.each do |course| %>
+<div clss="row">
+  <div class="col l6 Course__show__item_show hoverable">
+    <h5><i class="material-icons"></i><%= course.name %></h5>
+    <div class="row">
+      <% course.textbooks.each do |textbook| %>
+      <div class="col l2 Course__show__item_show--img">
+        <%= image_tag("textbook.jpg", class: "center-align responsive-img") %>
+        <%= link_to "出品", new_textbook_item_path(textbook.id), class:"waves-effect waves-light btn btn_hr_center"%>
+      </div>
+      <div class="col l1"></div>
+      <div class="col l9 Course__show__item_show--description">
+        <table class="bordered striped">
+          <thead></thead>
+          <tbody>
+            <tr>
+            <th>書籍名</th>
+            <td><%= textbook.name %></td>
+            </tr>
+            <tr>
+            <th>価格</th>
+            <td><%= textbook.price %>円</td>
+            </tr>
+            <tr>
+            <th>平均価格</th>
+            <td>円</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l12 Course__show__item_show--list">
+        <div class="col s12">
+          <% textbook.items.last(5).each do |item| %>
+          <div class="collection">
+            <%= link_to item_path(item), class:"collection-item" do %>
+            <%= item.price%>円
+            <%= item_tag(item) %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+        <div class="col l12 Course__show__item_show--link">
+          <%= link_to "....もっと見る", course_path(course.id) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
-</ul>
+<% end %>

@@ -6,8 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.integer :price
       t.integer :status
       t.references :textbook, foreign_key: true
-      t.references :courses, foreign_key: true
-      t.boolean   :purchased, default: false
+      t.references :course, foreign_key: true
       t.boolean   :contract, default: false
       t.references :seller
 
