@@ -3,12 +3,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i(google)
-  has_many :contracts
-  has_many :messages
-  has_many :items
+
   belongs_to :school
   belongs_to :faculty
   belongs_to :department
+
+  has_many :contracts
+  has_many :messages
+  has_many :items
+
+  has_many :contracts_of_seller, class_name: "Contract", foreign_key: :seller_id
+  has_many :contracts_of_purchaser, class_name: "Contract", foreign_key: :purchaser_id
+  has_many :items_of_seller, through: :contracts_of_seller, :source => 'item'
+  has_many :items_of_purchaser, through: :contracts_of_purchaser, source: 'item'
 
   enum user_status: { published: 0, closed: 1, admin: 2}
 

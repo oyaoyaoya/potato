@@ -107,7 +107,8 @@ header, main, footer {
   font-weight: 200;
   text-align: center;
   color: #fff;
-  margin-top: -15px;
+  margin-top: 65px;
+  margin-bottom: 0px;
   &--success{
     background-color: #38aef0;
   }
@@ -144,6 +145,7 @@ header, main, footer {
   position: fixed;
   bottom: 30px;
   right: 50px;
+  background-color: #d65f4c;
   @include max-screen($breakpoint-mobile) {
     bottom: 40px;
     right: 40px;

@@ -16,10 +16,10 @@
     <h5>やり取りリスト</h5>
     <% @contracts.each do |contract| %>
     <div class="collection">
-      <%= link_to contract_path(contract), class:"collection-item truncate" do %>
-      <%= message_tag(contract) %>
-      <%= status_tag(contract.item) %>
-      <%= contract.item.name %>
+      <%= link_to contract_path(contract.item_id), class:"collection-item truncate" do %>
+        <%= message_tag(contract) %>
+        <%= status_tag(contract.item) %>
+        <%= contract.item.name %>
       <% end %>
     </div>
     <% end %>

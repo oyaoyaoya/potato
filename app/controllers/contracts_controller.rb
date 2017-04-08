@@ -10,6 +10,7 @@ class ContractsController < ApplicationController
   def create
     contract = Contract.new(contract_params)
     if contract.save
+      NotificationMailer.contract_notification_mail(contract).deliver
       @item.purchased = true
       @item.save
       redirect_to contract_path
@@ -21,7 +22,7 @@ class ContractsController < ApplicationController
   def show
     @message = Message.new
     @message.contract_id = @contract.id
-    @messages = Message.where(contract_id: @contract.id).includes(:user)
+    @messages = @contract.messages.includes(:from_user)
   end
 
   def update
@@ -38,14 +39,14 @@ class ContractsController < ApplicationController
 
   private
 
+  def contract_params
+    params.permit().merge(purchaser_id: current_user.id, seller_id: @item.seller_id, item_id: @item.id)
+  end
+
   def check_contract
     if Contract.find_by(item_id: params[:id]) == nil
       redirect_to item_path(params[:id]), alert: "契約がまだ成立していません。"
     end
-  end
-
-  def contract_params
-    params.permit(:id).merge(purchaser_id: current_user.id, seller_id: @item.seller_id, item_id: @item.id)
   end
 
   def set_item

@@ -4,7 +4,7 @@
       <%= f.text_field :name, class:"validate" %>
     </div>
     <div class="input-field" id="school_form">
-      <%= f.collection_select :school_id, School.all, :id, :name %>
+      <%= f.collection_select :school_id, School.all, :id, :name, :prompt => "選択してください" %>
       <label>大学を選択してください。</label>
     </div>
 

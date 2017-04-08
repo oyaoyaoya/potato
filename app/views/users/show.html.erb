@@ -10,6 +10,6 @@
       <a href="#!" class="collection-item">学年：<%= current_user.grade %>年</a>
     </div>
     <%= link_to "プロフィール編集", edit_user_path(current_user), class:"btn" %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: "delete", class:"btn red" %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: "delete", class:"btn btn__logout" %>
   </div>
 </div>

@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %w( edit update show)
+  before_action :check_user, only: %w( edit show)
 
   def show
-1  end
+  end
 
   def edit
     @schools = School.all
@@ -49,11 +50,19 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by(params[:id])
   end
 
   def user_params
     params.require(:user).permit(:name, :school_id, :department_id, :faculty_id, :grade)
   end
+
+  def check_user
+    unless user_signed_in? && current_user.id == params[:id].to_i
+      redirect_to :root, alert: "不当なアクセスです"
+    end
+  end
+
 end

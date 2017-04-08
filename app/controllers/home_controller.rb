@@ -20,7 +20,9 @@ class HomeController < ApplicationController
 
   def show
   end
+
   private
+  
   def complete_user?
     if user_signed_in? && current_user.completed == false
       redirect_to edit_user_path(current_user)

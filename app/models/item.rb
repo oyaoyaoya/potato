@@ -18,6 +18,8 @@ class Item < ApplicationRecord
   belongs_to :user
 
   has_one :contract, dependent: :destroy
+  has_one :seller, through: :contract
+  has_one :purchaser, through: :contract
 
   scope :which_is_same_as_user_faculty, -> current_user {
     joins(:courses).where('courses.faculty_id = ?', current_user.faculty_id)

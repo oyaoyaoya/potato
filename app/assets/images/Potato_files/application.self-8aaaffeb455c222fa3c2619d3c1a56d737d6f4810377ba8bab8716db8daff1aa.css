@@ -16583,7 +16583,8 @@ header, main, footer {
   font-weight: 200;
   text-align: center;
   color: #fff;
-  margin-top: -15px;
+  margin-top: 80px;
+  margin-bottom: 0px;
 }
 /* line 91, /Users/Oyana/workspace/project/potato/app/assets/stylesheets/layout.scss */
 .alert--success {
