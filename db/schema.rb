@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323071735) do
+ActiveRecord::Schema.define(version: 20170406025618) do
 
   create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "item_id"
@@ -30,24 +30,39 @@ ActiveRecord::Schema.define(version: 20170323071735) do
     t.integer  "faculty_id"
     t.integer  "department_id"
     t.integer  "school_id"
-    t.integer  "text_presence", limit: 1, default: 0, null: false
-    t.bigint   "period",                  default: 0, null: false
-    t.bigint   "day",                     default: 0, null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "text_presence",  limit: 1,     default: 0, null: false
+    t.bigint   "period",                       default: 0, null: false
+    t.bigint   "day",                          default: 0, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "professor_id"
+    t.string   "course_num"
+    t.integer  "hold_year"
+    t.string   "info"
+    t.string   "professor_name"
+    t.integer  "term",                         default: 0, null: false
+    t.text     "url",            limit: 65535
+    t.integer  "course_status"
     t.index ["department_id"], name: "index_courses_on_department_id", using: :btree
     t.index ["faculty_id"], name: "index_courses_on_faculty_id", using: :btree
     t.index ["professor_id"], name: "index_courses_on_professor_id", using: :btree
     t.index ["school_id"], name: "index_courses_on_school_id", using: :btree
   end
 
+  create_table "csv_counters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "csv_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "school_id"
     t.integer  "faculty_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "department_status"
     t.index ["faculty_id"], name: "index_departments_on_faculty_id", using: :btree
     t.index ["school_id"], name: "index_departments_on_school_id", using: :btree
   end
@@ -55,8 +70,9 @@ ActiveRecord::Schema.define(version: 20170323071735) do
   create_table "faculties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "school_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "faculty_status"
     t.index ["school_id"], name: "index_faculties_on_school_id", using: :btree
   end
 
@@ -86,10 +102,13 @@ ActiveRecord::Schema.define(version: 20170323071735) do
     t.integer  "status"
     t.integer  "textbook_id"
     t.integer  "course_id"
-    t.boolean  "purchased",   default: false
+    t.boolean  "purchased",             default: false
     t.integer  "seller_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "item_type"
+    t.boolean  "published",             default: true,  null: false
+    t.integer  "delivery",    limit: 2,                 null: false
     t.index ["course_id"], name: "index_items_on_course_id", using: :btree
     t.index ["seller_id"], name: "index_items_on_seller_id", using: :btree
     t.index ["textbook_id"], name: "index_items_on_textbook_id", using: :btree
@@ -119,18 +138,52 @@ ActiveRecord::Schema.define(version: 20170323071735) do
 
   create_table "schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.integer  "school_type", limit: 1, default: 0, null: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.integer  "school_type",   limit: 1, default: 0, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "school_status"
+  end
+
+  create_table "text_counts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "info",        limit: 65535
+    t.string   "name"
+    t.integer  "course_id"
+    t.string   "text_length"
+    t.string   "text_byte"
+    t.text     "text_lines",  limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["course_id"], name: "index_text_counts_on_course_id", using: :btree
+  end
+
+  create_table "text_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "info",       limit: 65535
+    t.string   "name"
+    t.integer  "course_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["course_id"], name: "index_text_infos_on_course_id", using: :btree
   end
 
   create_table "textbooks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "price"
-    t.text     "explanation", limit: 65535
+    t.text     "explanation",     limit: 65535
     t.integer  "course_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "author"
+    t.string   "publisher"
+    t.string   "published_year"
+    t.string   "isbn_10"
+    t.string   "isbn_13"
+    t.string   "issn_13"
+    t.string   "book_code"
+    t.text     "url",             limit: 65535
+    t.integer  "textbook_status"
+    t.text     "small_thumbnail", limit: 65535
+    t.text     "thumbnail",       limit: 65535
+    t.text     "info_link",       limit: 65535
     t.index ["course_id"], name: "index_textbooks_on_course_id", using: :btree
   end
 
@@ -166,6 +219,11 @@ ActiveRecord::Schema.define(version: 20170323071735) do
     t.integer  "faculty_id"
     t.integer  "grade"
     t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "meta"
+    t.string   "token"
+    t.integer  "user_status"
     t.index ["department_id"], name: "index_users_on_department_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["faculty_id"], name: "index_users_on_faculty_id", using: :btree
@@ -195,6 +253,8 @@ ActiveRecord::Schema.define(version: 20170323071735) do
   add_foreign_key "professors", "departments"
   add_foreign_key "professors", "faculties"
   add_foreign_key "professors", "schools"
+  add_foreign_key "text_counts", "courses"
+  add_foreign_key "text_infos", "courses"
   add_foreign_key "textbooks", "courses"
   add_foreign_key "user_evaluations", "items"
   add_foreign_key "users", "departments"

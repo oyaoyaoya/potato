@@ -1,9 +1,11 @@
 class ContractsController < ApplicationController
-  before_action :check_contract, only: %i(show update)
+  before_action :authenticate_user!
   before_action :set_item, only: %i(show create update)
+  before_action :create_check_item, only: %i( create )
+  before_action :check_contract, only: %i(show update)
   before_action :set_contract, only: %i( show update)
-  before_action :check_user, only: %i(show update)
   before_action :create_check_user, only: %i( create )
+  before_action :check_user, only: %i(show update)
 
   def create
     contract = Contract.new(contract_params)
@@ -19,7 +21,7 @@ class ContractsController < ApplicationController
   def show
     @message = Message.new
     @message.contract_id = @contract.id
-    @messages = Message.where(contract_id: @contract.id)
+    @messages = Message.where(contract_id: @contract.id).includes(:user)
   end
 
   def update
@@ -47,18 +49,21 @@ class ContractsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find_by_id(params[:id])
+    if @item == nil
+      redirect_to item_path(params[:id]), alert: "クソです。"
+    end
   end
 
   def set_contract
-    @contract = Contract.find(params[:id])
+    @contract = Contract.find_by(item_id: params[:id])
   end
 
   def create_check_user
     # 購入者 != 出品者
     # 購入者 != 非ログインユーザー
     if current_user.id == @item.seller_id
-      redirect_to item_path(params[:id])
+      redirect_to item_path(params[:id]), "ユーザーが不当です。"
     end
   end
 
@@ -67,6 +72,12 @@ class ContractsController < ApplicationController
     # アクセスユーザー != 非ログインユーザー
     unless current_user.id == @contract.purchaser_id || current_user.id == @contract.seller_id
       redirect_to root_path, alert: "不当なユーザーです"
+    end
+  end
+
+  def create_check_item
+    if @item.published == false
+      redirect_to item_path(@item.id), alert: "公開されていないアイテムです"
     end
   end
 end

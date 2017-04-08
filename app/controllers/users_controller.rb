@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %w( edit update)
+  before_action :set_user, only: %w( edit update show)
 
   def show
-    @contracts = Contract.where(seller_id: current_user.id).or(Contract.where(purchaser_id: current_user.id))
-  end
+1  end
 
   def edit
     @schools = School.all
@@ -33,21 +32,28 @@ class UsersController < ApplicationController
   end
 
   def sold_list
-    @items = Item.where(seller_id: current_user.id)
+    items = Item.unscoped.all
+    @items = items.where(seller_id: current_user.id, item_type: 0)
   end
 
   def bought_list
-    # 購入アイテムの一覧が欲しい
-    # Contractのpurchaser_idがcurrent_userのものの一覧を所得
-    # item_idの一覧を所得する
-    @items = Item.includes(:contract).where(contracts: {purchaser_id: current_user.id })
+    @items = Item.includes(:contract).where(contracts: {purchaser_id: current_user.id }, item_type: 0)
+  end
+
+  def contract_list
+    @contracts = Contract.where(seller_id: current_user.id).or(Contract.where(purchaser_id: current_user.id))
+  end
+
+  def hope_list
+    @items = Item.where(seller_id: current_user.id, item_type: 1)
   end
 
   private
   def set_user
     @user = User.find(params[:id])
   end
+
   def user_params
-    params.require(:user).permit(:name, :school_id, :department_id, :faculty_id)
+    params.require(:user).permit(:name, :school_id, :department_id, :faculty_id, :grade)
   end
 end

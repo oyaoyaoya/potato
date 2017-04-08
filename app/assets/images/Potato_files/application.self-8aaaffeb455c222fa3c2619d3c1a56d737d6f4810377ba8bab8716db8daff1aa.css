@@ -8087,6 +8087,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
 }
 
+
 /* line 31, /Users/Oyana/workspace/project/potato/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.97.8/app/assets/stylesheets/materialize/components/_typography.scss */
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-weight: inherit;
@@ -9018,7 +9019,7 @@ button.btn-floating {
 }
 /* line 37, /Users/Oyana/workspace/project/potato/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.97.8/app/assets/stylesheets/materialize/components/_dropdown.scss */
 .dropdown-content li > a, .dropdown-content li > span {
-  font-size: 16px;
+  font-size: 100px;
   color: #26a69a;
   display: block;
   line-height: 22px;
@@ -16586,7 +16587,7 @@ header, main, footer {
 }
 /* line 91, /Users/Oyana/workspace/project/potato/app/assets/stylesheets/layout.scss */
 .alert--success {
-  background-color: #38aef0;
+  background-color: #1976d2;
 }
 /* line 94, /Users/Oyana/workspace/project/potato/app/assets/stylesheets/layout.scss */
 .alert--danger {

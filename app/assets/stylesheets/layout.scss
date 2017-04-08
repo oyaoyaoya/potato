@@ -1,12 +1,20 @@
+@import "materialize/components/color";
+html {
+  font-family: condensed light;
+}
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #f5f5f5;
+    background-color: $base;
   }
 
 main {
     flex: 1 0 auto;
+    min-height: calc( 100vh - 64px);
+    @include max-screen($breakpoint-mobile) {
+      min-height: calc( 100vh - 56px);
+    }
   }
 
 header, main, footer {
@@ -19,19 +27,27 @@ header, main, footer {
      }
    }
    @media only screen and (min-width: 993px){
-     .container {
-      width: 80%;
-     }
+
    }
+.container {
+  margin-top: 70px;
+}
 .clearfix{
   display: table;
   content: "";
 }
-
+#main-body{
+  min-height: calc(100vh - 64px);
+}
+#top-main-body{
+  min-height: calc(100vh - 64px);
+  background-color: #ffb300;
+}
 #logo-container{
   height: 60px;
   margin-bottom: 32px;
   padding: 0 20px;
+  text-align: center;
   &img{
     text-align: center;
   }
@@ -75,10 +91,11 @@ header, main, footer {
     width: 100%;
     height: 45px;
     margin: 0;
-    padding: 0 15px 0 15px;
     border: 0;
+    padding: 0 45px 0 15px;
 }
 .side-nav{
+  overflow: hidden;
   a#logo-container:hover{
     background-color: transparent;
   }
@@ -97,4 +114,58 @@ header, main, footer {
   &--danger{
     background-color: #d65f4c;
   }
+}
+
+.nav__list--empty{
+  line-height: 48px;
+  color: rgba(0, 0, 0, 0.87);
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  padding: 0 32px;
+}
+
+#search_course_field2{
+  background-color: white;
+  color: gray;
+  padding-left:15px;
+}
+
+.nav-wrapper{
+  padding-left: 15px;
+}
+
+.col{
+  margin-top: 10px;
+}
+
+.good_nav{
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  @include max-screen($breakpoint-mobile) {
+    bottom: 40px;
+    right: 40px;
+  }
+  img {
+    width: 32px;
+    margin-top: 11px;
+  }
+}
+.mobile_nav{
+  position: fixed;
+  z-index: 2;
+  &__search{
+    position: fixed;
+    right: 20px;
+    float: left;
+    z-index: 1;
+    height: 56px;
+    margin: 0 18px;
+  }
+}
+.brand-logo{
+  font-family:Roboto;
+  font-weight: 200;
 }

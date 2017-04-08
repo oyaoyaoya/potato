@@ -1,56 +1,8 @@
-<% provide :header, "授業一覧 | #{@faculty.name}" %>
-<div class="row">
-  <div class="col s12 l12">
-    <h4><%= @faculty.name %>授業一欄</h4>
-    <% @courses.each do |course| %>
-    <div clss="row">
-      <div class="col l6 Course__show__item_show hoverable">
-        <h5><i class="material-icons"></i><%= course.name %></h5>
-        <div class="row">
-          <% course.textbooks.each do |textbook| %>
-          <div class="col l2 Course__show__item_show--img">
-            <%= image_tag("textbook.jpg", class: "center-align responsive-img") %>
-          </div>
-          <div class="col l1"></div>
-          <div class="col l9 Course__show__item_show--description">
-            <table class="bordered striped">
-              <thead></thead>
-              <tbody>
-                <tr>
-                <th>書籍名</th>
-                <td><%= textbook.name %></td>
-                </tr>
-                <tr>
-                <th>価格</th>
-                <td><%= textbook.price %>円</td>
-                </tr>
-                <tr>
-                <th>平均価格</th>
-                <td>円</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col l12 Course__show__item_show--list">
-            <div class="col s12">
-              <% textbook.items.last(5).each do |item| %>
-              <div class="collection">
-                <%= link_to item_path(item), class:"collection-item" do %>
-                <%= item.price%>円
-                <%= item_tag(item) %>
-                <% end %>
-              </div>
-              <% end %>
-            </div>
-            <div class="col l12 Course__show__item_show--link">
-              <%= link_to "....もっと見る", course_path(course) %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-    <% end %>
-</div>
+<h4><%= @faculty.name if @faculty.present? %>授業一欄</h4>
+<% if @courses.present? %>
+  <%= render partial: "shared/many_text_items", locals: { courses: @courses, size: "6"} %>
+  <%= render partial: "shared/pagination", locals: { params: @courses} %>
+<% else %>
+  <p>該当する授業は存在しませんでした。</p>
+  <%= link_to "もう一度検索する",  home_search_path, class:"btn"%>
+<% end %>

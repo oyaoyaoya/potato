@@ -24,7 +24,7 @@ $(function() {
                     scriptCharset: 'UTF-8',
                     data: ("name=" + input),
                     dataType: 'json',
-                    timeout: 1000
+                    timeout: 100000
                 })
                     .done(function(data){
                         $('#course_result2').children().remove();

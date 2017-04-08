@@ -1,14 +1,15 @@
 <div class="row">
-  <div class="col l4">
-    <h5>やり取りリスト</h5>
-    <% @contracts.each do |contract| %>
+  <div class="col l6 m12 s12">
     <div class="collection">
-      <%= link_to contract_path(contract), class:"collection-item" do %>
-      <%= message_tag(contract) %>
-      <%= status_tag(contract.item) %>
-      <%= contract.item.name %>
-      <% end %>
+      <a href="#!" class="collection-item"><h4>プロフィール</h4>
+      <a href="http://www.google.co.jp/search?hl=ja&source=hp&q=<%= current_user.name%>" class="collection-item", target=["_blank"]>名前：<%= current_user.name %></a>
+      <a href="" class="collection-item">メールアドレス：<%= current_user.email %></a>
+      <a href="http://www.google.co.jp/search?hl=ja&source=hp&q=<%= current_user.school.name %> 年収" class="collection-item", target=["_blank"]>大学：<%= current_user.school.name %></a>
+      <a href="" class="collection-item" >学部：<%= current_user.faculty.name %></a>
+      <a href="#!" class="collection-item" >学科：<%= current_user.department.name %></a>
+      <a href="#!" class="collection-item">学年：<%= current_user.grade %>年</a>
     </div>
-    <% end %>
+    <%= link_to "プロフィール編集", edit_user_path(current_user), class:"btn" %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: "delete", class:"btn red" %>
   </div>
 </div>

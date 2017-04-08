@@ -212,6 +212,36 @@ ja:
       status:
         very_bad: '文字は読める'
         bad: '少し汚れが気になる'
-        normal: '適度に綺麗'
-        good: '綺麗!'
-        very_good: 'とても綺麗'
+        normal: '使用感あり'
+        good: '綺麗'
+        very_good: '新品同様'
+      item_type:
+        sell: '出品'
+        order: '購入希望'
+      delivery:
+        hand: "手渡し"
+        shipping: "着払い"
+        both: "どちらでも可能"
+    course:
+      period:
+        period_one: "1限"
+        period_two: "2限"
+        period_three: "3限"
+        period_four: "4限"
+        period_five: "5限"
+        period_six: "6限"
+        period_seven: "7限"
+        other_option: "その他"
+      day:
+        monday: "月曜日"
+        tuesday: "火曜日"
+        wednesday: "水曜日"
+        thursday: "木曜日"
+        friday: "金曜日"
+        saturday: "土曜日"
+        other_day: "その他"
+      term:
+        first: "前期"
+        second: "後期"
+        hole: "通年"
+        other_option: "その他"

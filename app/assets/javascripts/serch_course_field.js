@@ -1,6 +1,5 @@
 function removeElement(){
   var hoge = $('.search-results').children();
-  console.log(hoge)
   $('.search-wrapper').css('margin', '0 12px')
   $('.search-results').children().remove();
   $('#search_course_field').val("");
