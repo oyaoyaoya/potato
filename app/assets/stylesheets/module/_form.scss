@@ -1,0 +1,13 @@
+@import "common/fonts";
+@import "common/color";
+@import "common/media_queries";
+
+@media #{$small-and-down} {
+  html {
+  font-size: 14px;
+}
+  .Form{
+    %__label{
+    }
+  }
+}
