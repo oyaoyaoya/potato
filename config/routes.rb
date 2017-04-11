@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  root 'home#index'
   get 'home/help', to: "home#help"
   get 'home/search', to: "home#search"
   get 'home/contact', to: "home#contact"
@@ -40,5 +39,5 @@ Rails.application.routes.draw do
     resources :items
   end
   get '/admin' => "admin#index"
-  # get '*path', to: 'application#render_404'
+  root 'home#index'
 end

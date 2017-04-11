@@ -93,8 +93,6 @@ class TextInfo < ApplicationRecord
   def self.google
     require 'google/apis/books_v1'
     servise = Books::Metadata.new
-    puts servise.items=(isbn:"9780393352344")
-    # (isbn:"9780393352344")
     puts "hage"
   end
 end

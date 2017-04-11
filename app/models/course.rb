@@ -19,7 +19,5 @@ class Course < ApplicationRecord
   scope :search_by, -> (name) { where('name LIKE(?)', "%#{name}%") }
   scope :only_existed, -> { where(text_presence: 0)}
 
-  default_scope { where.not(course_status: "closed")}
-
   include CsvExportable
 end

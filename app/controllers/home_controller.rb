@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       @faculty = Faculty.find(rand(1..11))
       hash[:faculty_id] = @faculty.id
     end
-    @courses = Course.only_existed.where(hash).includes({textbooks: [:items]}).page(params[:page]).per(14)
+    @courses = Course.where(hash).includes({textbooks: [:items]}).page(params[:page]).per(14)
   end
 
   def search
