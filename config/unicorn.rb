@@ -1,8 +1,8 @@
-app_path = File.expand_path('../../../', __FILE__)
+app_path = '/var/www/potato'
 
 worker_processes 1
 
-working_directory "#{app_path}/potato"
+working_directory "#{app_path}/current"
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
 stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
@@ -24,7 +24,6 @@ before_fork do |server, worker|
   if run_once
     run_once = false # prevent from firing again
   end
-
   old_pid = "#{server.config[:pid]}.oldbin"
   if File.exist?(old_pid) && server.pid != old_pid
     begin
