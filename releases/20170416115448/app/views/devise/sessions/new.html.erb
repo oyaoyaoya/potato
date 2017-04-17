@@ -1,0 +1,16 @@
+<div class="row">
+  <div id="home-search" class="col s12 m12 l12 Search_course valign-wrapper">
+    <div class="valign center Search_course__text_field__wrap input-field">
+      <p id="Home__logo--sub--hu" class="Home__logo--sub ">この先はログインが必要です。
+        <div>
+          <%= image_tag 'sorry.jpg', class:"sorry--jpg", id:"Home__logo--sub--hu"%>
+        </div>
+        <div id="social-icon"class="clear sorry--link">
+          <%= link_to user_google_omniauth_authorize_path do %>
+            <i class="fa fa-google fa-lg"></i>大学メールでログイン
+          <% end %>
+        </div>
+      </p>
+    </div>
+  </div>
+</div>

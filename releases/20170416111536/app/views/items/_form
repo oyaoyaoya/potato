@@ -1,0 +1,39 @@
+<%= form_for([textbook, item]) do |f| %>
+    <div class="input-field col s12 form_field">　
+      <%= f.text_field :name, disabled: "true"%>
+      <%= f.label :name, html: {class: "Form__label"} %>
+    </div>
+    <p class="col s12">
+      <label for="price">値段</label>
+      <div class="col s12">
+        <%= f.radio_button :price, 0, class:"with-gap" %><%= f.label :price_0, 0 %>
+        <%= f.radio_button :price, 500, class:"with-gap" %><%= f.label :price_500, 500 %>
+        <%= f.radio_button :price, 1000, class:"with-gap" %><%= f.label :price_1000, 1000 %>
+        <%= f.radio_button :price, 1500, class:"with-gap" %><%= f.label :price_1500, 1500 %>
+        <%= f.radio_button :price, 2000, class:"with-gap" %><%= f.label :price_2000, 2000 %>
+      </div>
+    </p>
+    <p class="col s12">
+      <label for="price">状態</label>
+      <div class="col s12">
+        <%= f.radio_button :status, :very_good, class:"with-gap" %><%= f.label :status_very_good, "とても良い" %>
+        <%= f.radio_button :status, :good, class:"with-gap" %><%= f.label :status_good, "良い" %>
+        <%= f.radio_button :status, :normal, class:"with-gap" %><%= f.label :status_normal, "普通" %>
+        <%= f.radio_button :status, :bad, class:"with-gap" %><%= f.label :status_bad, "悪い" %>
+        <%= f.radio_button :status, :very_bad, class:"with-gap" %><%= f.label :status_very_bad, "とても悪い" %>
+      </div>
+    </p>
+    <div class="switch">
+      <label>
+        非公開
+        <%= f.check_box :published %>
+        <span class="lever"></span>
+        公開
+      </label>
+    </div>
+
+  <%= f.hidden_field :course_id %>
+  <%= f.hidden_field :textbook_id %>
+  <%= f.hidden_field :item_type, value: item.item_type %>
+  <%= f.submit "#{controller.action_name == "edit" ? "update" : "create"}", class:"waves-effect waves-light btn", data:{disable_with: "通信中"} %>
+<% end %>

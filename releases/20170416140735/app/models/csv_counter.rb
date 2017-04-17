@@ -1,0 +1,2 @@
+class CsvCounter < ApplicationRecord
+end

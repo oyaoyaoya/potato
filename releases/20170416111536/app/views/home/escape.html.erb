@@ -1,0 +1,8 @@
+<div id="side-bar" class="col s1 l3">
+  <%= form_tag search_courses_path, method: 'get', id: "serch_course_form" do %>
+      <%=  text_field_tag "", "", id: "serch_course_field" %>
+      <%=  submit_tag "検索", class:'waves-effect waves-light btn', id: "search_form_btn", data: { disable_with: '検索中...'} %>
+  <% end %>
+  <ul id="course_result">
+  </ul>
+</div>

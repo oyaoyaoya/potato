@@ -1,0 +1,39 @@
+W, [2017-04-16T12:08:10.115230 #29453]  WARN -- : WARNING: Unknown `name` in $colors.
+         on line 409 of /var/www/potato/shared/bundle/ruby/2.3.0/gems/materialize-sass-0.97.8/app/assets/stylesheets/materialize/components/_color.scss
+
+
+D, [2017-04-16T12:08:28.532811 #29591] DEBUG -- :   [1m[35m (3.8ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2017-04-16T12:08:28.535082 #29591] DEBUG -- :   [1m[35m (2.0ms)[0m  [1m[34mSELECT GET_LOCK('7236146469169814490', 0);[0m
+D, [2017-04-16T12:08:28.546380 #29591] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (3.0ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2017-04-16T12:08:28.563807 #29591] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (3.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2017-04-16T12:08:28.567293 #29591] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+D, [2017-04-16T12:08:28.568781 #29591] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+D, [2017-04-16T12:08:28.569565 #29591] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('7236146469169814490')[0m
+D, [2017-04-16T13:16:34.419973 #31529] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2017-04-16T13:16:34.420664 #31529] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('7236146469169814490', 0);[0m
+D, [2017-04-16T13:16:34.429299 #31529] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2017-04-16T13:16:34.438612 #31529] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2017-04-16T13:16:34.442315 #31529] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+D, [2017-04-16T13:16:34.443626 #31529] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+D, [2017-04-16T13:16:34.444246 #31529] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT RELEASE_LOCK('7236146469169814490')[0m
+D, [2017-04-16T14:07:53.849795 #937] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2017-04-16T14:07:53.850474 #937] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('7236146469169814490', 0);[0m
+D, [2017-04-16T14:07:53.858861 #937] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2017-04-16T14:07:53.868788 #937] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2017-04-16T14:07:53.872490 #937] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+D, [2017-04-16T14:07:53.873798 #937] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+D, [2017-04-16T14:07:53.874371 #937] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('7236146469169814490')[0m
+D, [2017-04-17T05:14:22.377270 #5269] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2017-04-17T05:14:22.377914 #5269] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('7236146469169814490', 0);[0m
+D, [2017-04-17T05:14:22.386411 #5269] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2017-04-17T05:14:22.395836 #5269] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2017-04-17T05:14:22.399339 #5269] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+D, [2017-04-17T05:14:22.400680 #5269] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+D, [2017-04-17T05:14:22.401305 #5269] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT RELEASE_LOCK('7236146469169814490')[0m
+D, [2017-04-17T05:22:19.924928 #6462] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2017-04-17T05:22:19.925648 #6462] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('7236146469169814490', 0);[0m
+D, [2017-04-17T05:22:19.934148 #6462] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2017-04-17T05:22:19.943517 #6462] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2017-04-17T05:22:19.947016 #6462] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+D, [2017-04-17T05:22:19.948379 #6462] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+D, [2017-04-17T05:22:19.948969 #6462] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT RELEASE_LOCK('7236146469169814490')[0m

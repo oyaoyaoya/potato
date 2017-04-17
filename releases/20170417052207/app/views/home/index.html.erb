@@ -1,0 +1,5 @@
+<div class="row">
+  <h4><%= @faculty.name %>の授業を探す</h4>
+  <%= render partial: "shared/many_text_items", locals: { courses: @courses, size: "6"} %>
+</div>
+<%= render partial: "shared/pagination", locals: { params: @courses} %>

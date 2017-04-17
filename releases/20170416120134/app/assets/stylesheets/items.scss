@@ -1,0 +1,33 @@
+@import "common/fonts";
+@import "common/color";
+@import "common/media_queries";
+
+.text-img-6{
+  width: 100px;
+  height: auto;
+}
+
+.text-img-12{
+  width: 130px;
+  height: auto;
+}
+
+.bbtn{
+  width: 110%;
+  padding: 0 1.5rem;
+  @include max-screen($breakpoint-mobile) {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1.4em;
+  }
+}
+.scroll{
+  overflow: scroll;
+  display: block;
+}
+
+.item-label{
+  @include max-screen($breakpoint-mobile) {
+    font-size: 1.1em;
+  }
+}

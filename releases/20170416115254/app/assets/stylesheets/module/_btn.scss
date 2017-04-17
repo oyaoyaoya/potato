@@ -1,0 +1,21 @@
+.btn_hr_center{
+  left: 50%;
+  margin-left: -1.5em;
+  padding: 0 1.5rem;
+}
+.btn_vr_center{
+  margin-top: 20px;
+  &--contract{
+    width: 130px;
+    @include max-screen($breakpoint-mobile) {
+      width: 100%;
+      margin-top: 0px;
+    }
+  }
+}
+.item--btn{
+  @include max-screen($breakpoint-mobile) {
+    width: 100%;
+    font-size: 1.3rem;
+  }
+}

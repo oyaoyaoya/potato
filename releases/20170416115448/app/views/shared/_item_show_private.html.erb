@@ -1,0 +1,22 @@
+<% if item.seller_id == current_user.id %>
+  <% if item.purchased == false %>
+    <%= link_to edit_item_path(item), class:"btn waves-effect waves-light item--btn", data:{disable_with: "通信中"} do%>
+    編集する
+    <% end %>
+  <% else %>
+    <p class="btn waves-effect grey waves-light">やり取り</p>
+  <% end %>
+<% else %>
+  <% if item.purchased == false %>
+    <% if item.published == true %>
+      <%= link_to contract_path, method: :post, class:"btn waves-effect waves-light #{item_type[0]} item--btn", data:{confirm: '購入しますか？', disable_with: "通信中"} do%>
+      　<%= item_type[1] %>
+        <i class="material-icons right">send</i>
+      <% end %>
+    <% else %>
+    <p class="btn waves-effect grey waves-light">非公開</p>
+    <% end %>
+  <% else %>
+    <p class="btn waves-effect grey waves-light">購入済み</p>
+  <% end %>
+<% end %>

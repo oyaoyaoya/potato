@@ -1,0 +1,8 @@
+ja:
+  status:
+    item:
+      very_bad: '文字は読める'
+      bad: '少し汚れが気になる'
+      normal: '適度に綺麗'
+      good: '綺麗!'
+      very_good: 'とても綺麗'
