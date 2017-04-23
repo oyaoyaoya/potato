@@ -17,13 +17,6 @@ set :log_level, :debug
 
 set :keep_releases, 5
 
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
-end
-
 namespace :deploy do
   desc 'Restart application'
   task :restart do
@@ -36,6 +29,17 @@ namespace :deploy do
       with rails_env: fetch(:rails_env) do
         within current_path do
           execute :bundle, :exec, :rake, 'db:create'
+        end
+      end
+    end
+  end
+
+  desc 'Run seed'
+  task :seed do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:seed'
         end
       end
     end
