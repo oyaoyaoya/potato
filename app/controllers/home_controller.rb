@@ -9,7 +9,8 @@ class HomeController < ApplicationController
       @faculty = Faculty.find(rand(1..11))
       hash[:faculty_id] = @faculty.id
     end
-    @courses = Course.where(hash).includes({textbooks: [:items]}).page(params[:page]).per(14)
+    page_num = (params[:page].presence || 1).to_i
+    @courses = Course.where(hash).includes({textbooks: [:items]}).page(page_num).per(14)
   end
 
   def search
@@ -22,7 +23,7 @@ class HomeController < ApplicationController
   end
 
   private
-  
+
   def complete_user?
     if user_signed_in? && current_user.completed == false
       redirect_to edit_user_path(current_user)
