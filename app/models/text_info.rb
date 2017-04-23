@@ -1,10 +1,4 @@
 class TextInfo < ApplicationRecord
-  require 'open-uri'
-  require 'pry-rails'
-  # Nokogiriライブラリの読み込み
-  require 'nokogiri'
-  require "csv"
-  require 'google/apis/books_v1'
   Books = Google::Apis::BooksV1
 
   # スクレイピング先のURL
