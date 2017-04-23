@@ -1,8 +1,0 @@
-<% if item.purchased == false %>
-  <%= link_to contract_path, method: :post, class:"btn waves-effect waves-light #{item_type[0]}", data:{confirm: '購入しますか？', disable_with: "通信中"} do%>
-  　<%= item_type[1] %>
-    <i class="material-icons right">send</i>
-  <% end %>
-<% else %>
-  <p class="btn waves-effect grey waves-light">購入済み</p>
-<% end %>

@@ -1,2 +1,0 @@
-class TextCount < ApplicationRecord
-end

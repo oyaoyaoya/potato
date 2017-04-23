@@ -1,1 +1,0 @@
-json.array! @admin_textbooks, partial: 'admin_textbooks/admin_textbook', as: :admin_textbook

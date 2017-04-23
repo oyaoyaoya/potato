@@ -1,1 +1,0 @@
-json.partial! "admin_faculties/admin_faculty", admin_faculty: @admin_faculty

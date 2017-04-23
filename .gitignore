@@ -12,6 +12,11 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/shared/*
+/repo/*
+/releases/*
+/public/*
+/revisions.log
+/current/*
 # Ignore Byebug command history file.
 .byebug_history
