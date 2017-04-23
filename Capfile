@@ -23,4 +23,4 @@ require 'capistrano/rails/migrations'
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
-Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
+Dir.glob("lib/capistrano/tasks/*.rb").each { |r| import r }
