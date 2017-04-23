@@ -17,9 +17,6 @@ set :log_level, :debug
 
 set :keep_releases, 5
 
-set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
-set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
-
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
