@@ -15,6 +15,7 @@
 /shared/*
 /repo/*
 /config/database.yml
+/config/secrets.yml
 /releases/*
 /revisions.log
 /current/*
