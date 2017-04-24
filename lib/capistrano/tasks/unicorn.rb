@@ -2,7 +2,7 @@
 namespace :unicorn do
   task :environment do
     set :unicorn_pid,    "/var/www/potato/shared/tmp/pids/unicorn.pid"
-    set :unicorn_config, "/var/www/potato/current/config/unicorn/production.rb"
+    set :unicorn_config, "/var/www/potato/current/config/production.rb"
   end
 
 #unicornをスタートさせるメソッド
@@ -47,7 +47,7 @@ namespace :unicorn do
   desc "Restart unicorn server gracefully"
   task restart: :environment do
     on roles(:app) do
-      if test("[ -f #{fetch(:unicorn_pid)} ]")
+      if test("[ -f #{unicorn/production.rb(:unicorn_pid)} ]")
         reload_unicorn
       else
         start_unicorn
