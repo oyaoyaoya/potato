@@ -11,7 +11,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :unicorn_pid, "/var/www/potato/shared/tmp/pids/unicorn.pid"
 
-set :unicorn_config_path, "/var/www/potato/current/config/unicorn/production.rb"
+set :unicorn_config_path, "/var/www/potato/current/config/unicorn.rb"
 
 set :rbenv_type, :user
 
