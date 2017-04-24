@@ -14,6 +14,7 @@
 !/tmp/.keep
 /shared/*
 /repo/*
+/config/database.yml
 /releases/*
 /revisions.log
 /current/*
