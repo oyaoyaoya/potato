@@ -33,24 +33,22 @@ check_client_connection false
 
 run_once = true
 
-before_fork do |server, worker|
-  defined?(ActiveRecord::Base) &&
-    ActiveRecord::Base.connection.disconnect!
-  if run_once
-    run_once = false # prevent from firing again
-  end
+#ホットデプロイをするかしないかを設定
+  preload_app true
 
-  old_pid = "#{server.config[:pid]}.oldbin"
-  if File.exist?(old_pid) && server.pid != old_pid
-    begin
-      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-      Process.kill(sig, File.read(old_pid).to_i)
-    rescue Errno::ENOENT, Errno::ESRCH => e
-      logger.error e
+#fork前に行うことを定義。後述
+  before_fork do |server, worker|
+    defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
+    old_pid = "#{server.config[:pid]}.oldbin"
+    if old_pid != server.pid
+      begin
+        Process.kill "QUIT", File.read(old_pid).to_i
+      rescue Errno::ENOENT, Errno::ESRCH
+      end
     end
   end
-end
 
-after_fork do |_server, _worker|
-  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
-end
+#fork後に行うことを定義。後述
+  after_fork do |server, worker|
+    defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+  end
