@@ -2,7 +2,7 @@
 namespace :unicorn do
   task :environment do
     set :unicorn_pid,    "/var/www/potato/shared/tmp/pids/unicorn.pid"
-    set :unicorn_config, "/var/www/potato/current/config/production.rb"
+    set :unicorn_config, "/var/www/potato/current/config/unicorn.rb"
   end
 
 #unicornをスタートさせるメソッド
