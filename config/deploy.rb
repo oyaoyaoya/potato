@@ -24,6 +24,7 @@ set :keep_releases, 5
 namespace :deploy do
   desc 'Restart application'
   task :restart do
+    desc 'hgoehgoe'
     invoke 'unicorn:restart'
   end
 
