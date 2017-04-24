@@ -11,7 +11,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :unicorn_pid, "/var/www/potato/shared/tmp/pids/unicorn.pid"
 
-set :unicorn_config_path, "/var/www/potato/config/unicorn.rb"
+set :unicorn_config_path, "/var/www/potato/current/config/unicorn/production.rb"
 
 set :rbenv_type, :user
 
@@ -24,7 +24,6 @@ set :keep_releases, 5
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    desc 'hgoehgoe'
     invoke 'unicorn:restart'
   end
 
