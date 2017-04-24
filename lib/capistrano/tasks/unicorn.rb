@@ -1,8 +1,8 @@
 #unicornのpidファイル、設定ファイルのディレクトリを指定
 namespace :unicorn do
   task :environment do
-    set :unicorn_pid,    "#{current_path}/tmp/pids/unicorn.pid"
-    set :unicorn_config, "#{current_path}/config/unicorn/production.rb"
+    set :unicorn_pid,    "/var/www/potato/current/tmp/pids/unicorn.pid"
+    set :unicorn_config, "/var/www/potato/current/config/unicorn/production.rb"
   end
 
 #unicornをスタートさせるメソッド
