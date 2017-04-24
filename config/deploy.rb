@@ -9,7 +9,7 @@ set :linked_files, fetch(:linked_files, []).push('config/settings.yml')
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
-set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
+set :unicorn_pid, "/var/www/potato/shared/tmp/pids/unicorn.pid"
 
 set :unicorn_config_path, "/var/www/potato/config/unicorn.rb"
 
