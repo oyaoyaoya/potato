@@ -4,8 +4,7 @@ namespace :unicorn do
     set :unicorn_pid,    "/var/www/potato/shared/tmp/pids/unicorn.pid"
     set :unicorn_config, "/var/www/potato/current/config/unicorn.rb"
   end
-
-#unicornをスタートさせるメソッド
+  #unicornをスタートさせるメソッド
   def start_unicorn
     within current_path do
       execute :bundle, :exec, :unicorn, "-c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
@@ -47,7 +46,7 @@ namespace :unicorn do
   desc "Restart unicorn server gracefully"
   task restart: :environment do
     on roles(:app) do
-      if test("[ -f #{unicorn/production.rb(:unicorn_pid)} ]")
+      if test("[ -f #{fetch(:unicorn_pid)} ]")
         reload_unicorn
       else
         start_unicorn
