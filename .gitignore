@@ -16,7 +16,6 @@
 /repo/*
 /config/database.yml
 /config/secrets.yml
-/releases/*
 /revisions.log
 # Ignore Byebug command history file.
 .byebug_history
