@@ -12,8 +12,6 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/shared/*
-/repo/*
 /config/database.yml
 /config/secrets.yml
 /revisions.log
