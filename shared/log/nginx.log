@@ -1,1 +1,0 @@
-2017/04/24 08:02:19 [error] 10397#0: *270 connect() to unix:/var/www/potato/current/tmp/sockets/.unicorn.sock failed (111: Connection refused) while connecting to upstream, client: 140.205.201.7, server: localhost, request: "GET / HTTP/1.1", upstream: "http://unix:/var/www/potato/current/tmp/sockets/.unicorn.sock:/", host: "pota-to.com"
