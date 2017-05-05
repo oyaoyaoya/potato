@@ -1,0 +1,2 @@
+class TextCount < ApplicationRecord
+end

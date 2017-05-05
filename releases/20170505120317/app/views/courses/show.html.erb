@@ -1,0 +1,32 @@
+<% provide :header, "授業詳細 | #{@course.name}" %>
+<% if @course.text_presence == "existed"%>
+  <%= render partial: "shared/text_items", locals: { course: @course, size: "12"} %>
+<% else %>
+<div class="col s12 m12 l12 Course__show__item_show--description">
+  <table class="bordered truncate">
+    <thead></thead>
+    <tbody>
+      <tr>
+        <th>学部名</th>
+        <td><%= @course.faculty.name %></td>
+      </tr>
+      <tr>
+        <th>授業名</th>
+        <td><%= @course.name %></td>
+      </tr>
+      <tr>
+        <th>日時</th>
+        <td><%= @course.day_i18n %>:<%= @course.period_i18n %></td>
+      </tr>
+      <tr>
+        <th>講師名</th>
+        <td><%= @course.professor_name %></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>テキストが存在しない授業です</p>
+  <%= form_tag(new_textbook_path, method: :get) do %>
+    <%= hidden_field_tag(:course_id, @course.id) %>
+    <%= submit_tag("テキストを作る", class:"btn" )%>
+  <% end %>
+<% end %>

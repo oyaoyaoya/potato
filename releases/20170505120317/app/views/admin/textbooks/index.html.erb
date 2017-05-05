@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Textbooks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_textbooks.each do |admin_textbook| %>
+      <tr>
+        <td><%= link_to 'Show', admin_textbook %></td>
+        <td><%= link_to 'Edit', edit_admin_textbook_path(admin_textbook) %></td>
+        <td><%= link_to 'Destroy', admin_textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admin Textbook', new_admin_textbook_path %>

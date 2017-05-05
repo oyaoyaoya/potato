@@ -1,0 +1,39 @@
+<% provide :header, "やり取り画面" %>
+<div class="row">
+  <div class="col m3 l3 hide-on-small-only">
+  </div>
+  <div class="col s12 m7 l7">
+    <div class="row">
+      <div class="col s12 m10 l10">
+        <ul class="collection">
+          <li class="collection-item avatar">
+            <%= image_tag("icon.png", class:"circle") %>
+            <span class="title"><%= user_name(@contract) %>さん</span>
+            <p><%= @contract.item.name %><br>
+               <%= @contract.item.price %>円
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="col s12 l2">
+        <p>
+          <%= link_to "完了", contract_path(@contract.id), method: :patch, class:"waves-effect waves-light btn btn_vr_center btn_vr_center--contract #{ complete_status(@contract)} " %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m12 l12  Message__body">
+        <ul id="message_ul">
+          <%= render 'body' %>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m12 l12 Message__footer">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 hide-on-small-only">
+  </div>
+</div>

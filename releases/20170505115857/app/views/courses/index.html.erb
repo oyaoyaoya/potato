@@ -1,0 +1,8 @@
+<h4><%= @faculty.name if @faculty.present? %>授業一欄</h4>
+<% if @courses.present? %>
+  <%= render partial: "shared/many_text_items", locals: { courses: @courses, size: "6"} %>
+  <%= render partial: "shared/pagination", locals: { params: @courses} %>
+<% else %>
+  <p>該当する授業は存在しませんでした。</p>
+  <%= link_to "もう一度検索する",  home_search_path, class:"btn"%>
+<% end %>
