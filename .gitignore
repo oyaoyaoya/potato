@@ -21,3 +21,4 @@
 /current/*
 # Ignore Byebug command history file.
 .byebug_history
+/config/environments/production.rb
