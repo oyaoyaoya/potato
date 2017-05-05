@@ -83,4 +83,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  ActiveRecord::Base.logger = Logger.new("/var/www/potato/current/log/debug.log")
+  ActiveRecord::Base.logger.level = 0
 end
