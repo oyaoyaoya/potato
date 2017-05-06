@@ -14,7 +14,6 @@
 !/tmp/.keep
 /config/database.yml
 /config/secrets.yml
-/revisions.log
 # Ignore Byebug command history file.
 .byebug_history
 /config/environments/production.rb
