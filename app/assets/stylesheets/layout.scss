@@ -27,7 +27,9 @@ header, main, footer {
      }
    }
    @media only screen and (min-width: 993px){
-
+     .container {
+       margin-top: 95%;
+     }
    }
 .container {
   margin-top: 70px;
