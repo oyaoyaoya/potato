@@ -11,9 +11,9 @@
         <% else %>
           <div class="valign center Home__login_btn">
             <div id="social-icon"class="clear">
-              <%= link_to user_google_omniauth_authorize_path do %>
+              <a href="https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=495837691826-ne219phhutpiielp0mibpjo9s969ttkh.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Fpota-to.com%2Fusers%2Fauth%2Fgoogle%2Fcallback&response_type=code&scope=email&state=5bfaade9f48976cfd115361d3605b8f489c22dd4a43cb1d9">
                 <i class="fa fa-google fa-lg"></i>大学メールでログイン
-              <% end %>
+              </a>
             </div>
           </div>
         <% end %>
