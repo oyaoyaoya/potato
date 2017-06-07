@@ -2,31 +2,40 @@ class Textbook < ApplicationRecord
   enum textbook_status: { published: 0, closed: 1 }
   has_many :items
   belongs_to :course
-  # default_scope { where.not(textbook_status: "closed")} 
+  # default_scope { where.not(textbook_status: "closed")}
+
 
   include CsvExportable
-
+  require 'csv'
   require 'net/http'
   require 'open-uri'
   require 'json'
 
-  def self.search
+  def self.get_url
     # coding: utf-8
     # スクレイピング先のURL
     require 'open-uri'
     require "uri"
-    a = Textbook.where(textbook_status: "published")
-    last_id = a.empty? ? "0" : "#{a.last.id}"
-    @textbooks = Textbook.where('id > ?', last_id)
-    @textbooks.each do |textbook|
-      name = textbook.name
-      publisher = textbook.publisher
-      url = "https://www.googleapis.com/books/v1/volumes?q=#{name}?q=#{publisher}"
+    require 'csv'
+    num = File.open("app/models/textbook_links/huga.csv", "r") do |file|
+      file.read.to_i
+    end
+    @textbooks = Textbook.where('id > ?', num)
+    @urls = CSV.read("app/models/textbook_links/hoge.csv")
+    @textbooks.each.with_index(num) do |textbook, i|
+      url = @urls[i][0]
       new_url = URI.encode(url)
-      open(new_url)
+      begin
       res = open(new_url)
+      rescue
+        sleep(120)
+        res = open(new_url)
+      end
       code, message = res.status # res.status => ["200", "OK"]
       if code == '200'
+        File.open("app/models/textbook_links/huga.csv", 'w') do |file|
+          file.write(i)
+        end
         result = ""
         result = ActiveSupport::JSON.decode res.read
         # resultを使ってなんやかんや処理をする
@@ -80,6 +89,10 @@ class Textbook < ApplicationRecord
         puts "OMG!! #{code} #{message}"
         textbook.update(textbook_status: "closed")
       end
+      File.open("app/models/textbook_links/huga.csv", 'w') do |file|
+        file.write(i)
+      end
+      sleep(1)
     end
   end
 
@@ -96,4 +109,68 @@ class Textbook < ApplicationRecord
       puts textbook.book_code
     end
   end
+
+  def generate_csv(textbook_links)
+
+  end
+
+  def self.correct_links
+    textbook_links = []
+    textbooks = Textbook.all
+    textbooks.each do |textbook|
+      book_code = textbook.book_code
+      case book_code.length
+      when 10
+        url = "https://www.googleapis.com/books/v1/volumes?q=isbn:#{book_code}"
+      when 11
+        book_code.chop!
+        url = "https://www.googleapis.com/books/v1/volumes?q=isbn:#{book_code}"
+      when 13
+        url = "https://www.googleapis.com/books/v1/volumes?q=isbn:#{book_code}"
+      when 14
+        book_code.chop!
+        url = "https://www.googleapis.com/books/v1/volumes?q=isbn:#{book_code}"
+      else
+        url = "https://www.googleapis.com/books/v1/volumes?q=title:#{textbook.name}?q=authors:#{textbook.author}"
+      end
+      textbook_links << url
+    end
+
+    puts 'csvファイルを出力中・・・'
+
+    csv_data = CSV.generate do |csv|
+      textbook_links.each do |link|
+        csv << [link]
+      end
+    end
+
+    File.open("app/models/textbook_links/hoge.csv", 'a') do |file|
+      file.write(csv_data)
+    end
+    puts 'csvファイルの出力完了しました。'
+  end
+
+  def self.output_csv
+    csv_all = CSV.generate do |csv|
+     csv << column_names
+     all.each do |model|
+       csv << model.attributes.values_at(*column_names)
+     end
+    end
+
+    File.open("app/models/textbook_links/hage.csv", 'w') do |file|
+      file.write(csv_all)
+    end
+  end
+
+  def self.read_csv
+    csv = CSV.table("app/models/textbook_links/hage.csv")
+    csv.each do |csv|
+      csv = csv.to_hash
+      textbook = Textbook.find(csv[:id])
+      textbook.update(csv)
+      puts "done"
+    end
+  end
+
 end
