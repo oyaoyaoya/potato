@@ -12,7 +12,7 @@
               <div class="row">
                 <div class="col m12 l12 s12">
                   <div class="center-align">
-                    <%= image_tag("textbook.jpg", class: "text-img-#{size}") %>
+                    <%= image_tag("#{text_book.thumbnail == "none" ? "textbook.jpg" : text_book.thumbnail }", class: "text-img-#{size}") %>
                   </div>
                 </div>
               </div>
