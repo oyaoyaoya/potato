@@ -27,6 +27,7 @@
 }
 
 .item-label{
+  // コメント
   @include max-screen($breakpoint-mobile) {
     font-size: 1.1em;
   }
