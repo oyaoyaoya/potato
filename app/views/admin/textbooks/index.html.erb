@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Admin Textbooks</h1>
+<h1>テキスト一覧</h1>
 
 <table>
   <thead>
@@ -12,13 +12,16 @@
   <tbody>
     <% @admin_textbooks.each do |admin_textbook| %>
       <tr>
-        <td><%= link_to 'Show', admin_textbook %></td>
+        <td><%= admin_textbook.name %></td>
+        <td><%= link_to 'Show', admin_textbook_path(admin_textbook) %></td>
         <td><%= link_to 'Edit', edit_admin_textbook_path(admin_textbook) %></td>
-        <td><%= link_to 'Destroy', admin_textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', admin_textbook_path(admin_textbook), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= render partial: "shared/pagination", locals: { params: @admin_textbooks} %>
 
 <br>
 

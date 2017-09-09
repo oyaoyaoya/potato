@@ -107,7 +107,7 @@ header, main, footer {
   font-weight: 200;
   text-align: center;
   color: #fff;
-  margin-top: 65px;
+  margin-top: 60px;
   margin-bottom: 0px;
   &--success{
     background-color: #38aef0;
@@ -128,9 +128,6 @@ header, main, footer {
 }
 
 #search_course_field2{
-  background-color: white;
-  color: gray;
-  padding-left:15px;
 }
 
 .nav-wrapper{
@@ -170,4 +167,11 @@ header, main, footer {
 .brand-logo{
   font-family:Roboto;
   font-weight: 200;
+}
+
+.after_nav_box{
+
+  @include max-screen($breakpoint-mobile) {
+     margin-top: 60px;
+  }
 }

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_textbook, only: %w( new create)
   before_action :set_item, only: %w( show edit update)
-  before_action :authenticate_user!, except: %w( show )
+  before_action :authenticate_user!, except: %w( show new )
 
   def new
     @item = Item.new

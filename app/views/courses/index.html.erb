@@ -1,4 +1,4 @@
-<h4><%= @faculty.name if @faculty.present? %>授業一欄</h4>
+
 <% if @courses.present? %>
   <%= render partial: "shared/many_text_items", locals: { courses: @courses, size: "6"} %>
   <%= render partial: "shared/pagination", locals: { params: @courses} %>

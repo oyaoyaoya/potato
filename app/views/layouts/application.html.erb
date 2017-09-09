@@ -14,26 +14,8 @@
   </head>
   <body>
     <header>
-      <nav class="mobile_nav clearfix">
-        <div class="nav-wrapper">
-          <a href="/" class="brand-logo">Potato</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <a href="/home/search" data-activates="mobile-demo" class="mobile_nav__search hide-on-med-and-up"><i class="material-icons">search</i></a>
-          <ul class="side-nav" id="mobile-demo">
-            <li>
-              <div class="nav__list--empty"><i class="material-icons side_hide_btn">clear</i></div>
-            </li>
-            <li><div class="divider"></div></li>
-            <% if user_signed_in? %>
-              <%= render partial: 'shared/side_nav_login' , locals: { current_user: current_user} %>
-            <% else %>
-              <%= render partial: 'shared/side_nav_logout' %>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
-      <%# end %>
-      <strong><%# yield :header %></strong>
+      <!-- topのヘッダー -->
+      <!-- webだと出るサイドメニュー -->
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo clearfix">
           <div id="logo-container" class="brand-logo">
@@ -53,13 +35,37 @@
           <%= render partial: 'shared/side_nav_logout' %>
         <% end %>
       </ul>
-      <%# end %>
     </header>
     <main>
-      <p class="alert alert--success"><%= notice %></p>
-      <p class="alert alert--danger"><%= alert %></p>
-      <% if controller.controller_name == "home" && controller.action_name == "index"%>
-        <%= render partial: "shared/home" %>
+      <nav class="mobile_nav clearfix hide-on-large-only">
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo">Potato</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <a href="/search" data-activates="mobile-demo" class="mobile_nav__search hide-on-med-and-up"><i class="material-icons">search</i></a>
+          <ul class="side-nav" id="mobile-demo">
+            <li>
+              <div class="nav__list--empty"><i class="material-icons side_hide_btn">clear</i></div>
+            </li>
+            <li><div class="divider"></div></li>
+            <% if user_signed_in? %>
+              <%= render partial: 'shared/side_nav_login' , locals: { current_user: current_user} %>
+            <% else %>
+              <%= render partial: 'shared/side_nav_logout' %>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+      <div class="after_nav_box"></div>
+      <% if notice.present? || alert.present? %>
+        <div class="indo_wrap">
+          <p class="alert alert--success"><%= notice %></p>
+          <p class="alert alert--danger"><%= alert %></p>
+        </div>
+      <% end %>
+      <% unless user_signed_in? %>
+        <% if controller.controller_name == "home" && controller.action_name == "index"%>
+          <%= render partial: "shared/home" %>
+        <% end %>
       <% end %>
       <div class="container">
         <div class="row">

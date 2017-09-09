@@ -33,9 +33,6 @@ check_client_connection false
 
 run_once = true
 
-#ホットデプロイをするかしないかを設定
-  preload_app true
-
 #fork前に行うことを定義。後述
   before_fork do |server, worker|
     defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!

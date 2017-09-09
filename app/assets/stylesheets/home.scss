@@ -1,11 +1,11 @@
 @import "common/color";
 
 .Search_course{
-  margin-top: -3px;
   height: 100vh;
   padding: 0 0;
   color: white;
   background-color: $yellow;
+  margin-top: -10px;
   input{
     width: 50%;
   }
@@ -15,7 +15,7 @@
   &__text_field{
     &__wrap{
       width: 100%;
-      margin-top: -20px;
+      margin: 0px 12px;
     }
   }
 }
@@ -25,9 +25,20 @@
   }
   .chip{
     background-color: white;
+    float:inherit;
   }
 }
 
+.search-list{
+  text-align: center;
+  margin-top: 30vh;
+  .btn{
+    width: 80vw;
+  }
+  li:nth-child(2){
+    margin-top: 20px;
+  }
+}
 
 #social-icon{
   display: inline-table;
@@ -73,7 +84,7 @@
       font-weight: 200;
       font-size: 4.3rem;
       line-height: 110%;
-      margin: 2.1rem 0 0 0;
+      margin: 0;
     }
     &--sub{
       font-family: "Noto Sans Japanese";
@@ -97,4 +108,9 @@
 
 #Home__logo--sub--hu{
   color: black;
+}
+
+.search_fac > p{
+  text-align: center;
+  color: gray;
 }

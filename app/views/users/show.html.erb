@@ -4,10 +4,10 @@
       <a href="#!" class="collection-item"><h4>プロフィール</h4>
       <a href="http://www.google.co.jp/search?hl=ja&source=hp&q=<%= current_user.name%>" class="collection-item", target=["_blank"]>名前：<%= current_user.name %></a>
       <a href="" class="collection-item">メールアドレス：<%= current_user.email %></a>
-      <a href="http://www.google.co.jp/search?hl=ja&source=hp&q=<%= current_user.school.name %> 年収" class="collection-item", target=["_blank"]>大学：<%= current_user.school.name %></a>
-      <a href="" class="collection-item" >学部：<%= current_user.faculty.name %></a>
-      <a href="#!" class="collection-item" >学科：<%= current_user.department.name %></a>
-      <a href="#!" class="collection-item">学年：<%= current_user.grade %>年</a>
+      <a href="http://www.google.co.jp/search?hl=ja&source=hp&q=<%= current_user.school.try!(:name)%> 年収" class="collection-item", target=["_blank"]>大学：<%= current_user.school.try!(:name) %></a>
+      <a href="" class="collection-item" >学部：<%= current_user.faculty.try!(:name) %></a>
+      <a href="#!" class="collection-item" >学科：<%= current_user.department.try!(:name) %></a>
+      <a href="#!" class="collection-item">学年：<%= current_user.try(:grade) %>年</a>
     </div>
     <%= link_to "プロフィール編集", edit_user_path(current_user), class:"btn" %>
     <%= link_to "ログアウト", destroy_user_session_path, method: "delete", class:"btn btn__logout" %>

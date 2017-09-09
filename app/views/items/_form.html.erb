@@ -25,10 +25,28 @@
         </label>
       </div>
     <% end %>
-
-
   <%= f.hidden_field :course_id %>
   <%= f.hidden_field :textbook_id %>
   <%= f.hidden_field :item_type, value: item.item_type %>
-  <%= f.submit "#{controller.action_name == "edit" ? "update" : "create"}", class:"waves-effect waves-light btn", data:{disable_with: "通信中"} %>
+  <% if user_signed_in?%>
+    <%= f.submit "#{controller.action_name == "edit" ? "update" : "create"}", class:"waves-effect waves-light btn", data:{disable_with: "通信中"} %>
+  <% else %>
+    <div class="btn user_unlogin">出品</div>
+    <div id="user_modal" class="modal">
+      <div class="modal-content">
+        <h4>出品するためにはログイン/会員登録が必要です。</h4>
+        <p>Googleアカウントでログイン</p>
+      </div>
+      <div class="valign center Home__login_btn">
+        <div id="social-icon"class="clear">
+          <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+            <i class="fa fa-google fa-lg"></i>大学メールでログイン
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p class="btn modal_close-u"></p>
+      </div>
+    </div>
+  <% end %>
 <% end %>

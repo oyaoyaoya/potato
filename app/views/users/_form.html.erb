@@ -7,6 +7,10 @@
       <%= f.collection_select :school_id, School.all, :id, :name, :prompt => "選択してください" %>
       <label>大学を選択してください。</label>
     </div>
+    <div class="input-field" id="school_form">
+      <%= collection_select_tag :faculty_id, Faculty.all, :id, :name, :prompt => "" %>
+      <label></label>
+    </div>
 
     <div class="input-field" id="faculty_form">
       <%= render partial: 'faculties', locals: { school_id: School.first.id } %>

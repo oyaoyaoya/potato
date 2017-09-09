@@ -25,16 +25,17 @@ $(function() {
                     dataType: 'json',
                     timeout: 100000
                 })
-                    .done(function(data){
-                        $('#course_result2').children().remove();
-                        $.each(data, function(){
-                            course = buildCourse2(this)
-                            $('#course_result2').append(course);
-                        })
+                .done(function(data){
+                    $('#course_result2').children().remove();
+                    $.each(data, function(){
+                      course = buildCourse2(this)
+                      $('#course_result2').append(course)
+                      $('#course_result2').append(course)
                     })
-                    .fail(function () {
-                      alert("リロードしてください。")
-                    });
+                })
+                .fail(function () {
+                  alert("リロードしてください。")
+                });
                 return false
             }, 500);
             preInput = input;

@@ -250,7 +250,6 @@ Devise.setup do |config|
   config.omniauth :google_oauth2,
                 ENV['GOOGLE_CLIENT_ID'], # 環境変数に先ほど控えたクライアントIDを入れておく
                 ENV['GOOGLE_CLIENT_SECRET'], # 環境変数に先ほど控えたシークレットを入れておく
-                name: :google,
                 scope: %w(email)
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

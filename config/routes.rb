@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   get 'home/help', to: "home#help"
-  get 'home/search', to: "home#search"
+  get 'search', to: "home#search", as: "search"
   get 'home/contact', to: "home#contact"
   resources :users, only: %w( edit update show ) do
     collection do

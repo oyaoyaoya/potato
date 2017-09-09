@@ -8,8 +8,6 @@ $(function(){
                 faculty_id: faculty_value
             }
         }).done(function(data){
-            console.log(data)
-            console.log(faculty_value)
             $('#department_id').html(data).material_select();
             $('#user_faculty_id').val(faculty_value)
         })

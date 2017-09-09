@@ -4,6 +4,5 @@ class Faculty < ApplicationRecord
 
   has_many   :departments
   has_many   :courses
-
-  include CsvExportable
+  # scope :for_selection, -> { not(name: "全学部" ) }
 end

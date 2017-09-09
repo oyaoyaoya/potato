@@ -11,9 +11,15 @@ class HomeController < ApplicationController
     end
     page_num = (params[:page].presence || 1).to_i
     @courses = Course.where(hash).includes({textbooks: [:items]}).page(page_num).per(14)
+    # binding.pry
   end
 
   def search
+    if params[:key] == "sell"
+      @type = "sell"
+    elsif
+      @type = "buy"
+    end
   end
 
   def help

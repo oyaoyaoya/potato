@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i(google)
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i(google_oauth2)
 
   belongs_to :school
   belongs_to :faculty
@@ -19,7 +19,10 @@ class User < ApplicationRecord
 
   enum user_status: { published: 0, closed: 1, admin: 2}
 
-  def self.find_for_google(auth)
+  delegate :name, to: :faculty, prefix: true
+  delegate :name, to: :department, prefix: true
+  def self.find_for_google_oauth2(auth)
+      binding.pry
       user = User.find_by(email: auth.info.email)
       unless user
         user = User.create(name:     auth.info.name,

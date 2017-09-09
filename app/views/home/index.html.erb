@@ -1,5 +1,9 @@
-<div class="row">
-  <h4><%= @faculty.name %>の授業を探す</h4>
-  <%= render partial: "shared/many_text_items", locals: { courses: @courses, size: "6"} %>
-</div>
-<%= render partial: "shared/pagination", locals: { params: @courses} %>
+<ul class="search-list">
+  <li>
+    <%= link_to "買いたい",{controller: "home", action: "search", key: "buy"}, {class:"btn btn-large"}%>
+    <%= form_tag  %>
+  </li>
+  <li>
+    <%= link_to "売りたい", {controller: "home", action: "search", key: "sell" }, {class:"btn btn-large amber"}  %>
+  </li>
+</ul>

@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %w( edit update show)
-  before_action :check_user, only: %w( edit show)
+  # before_action :check_user, only: %w( edit show)
 
   def show
   end
 
   def edit
     @schools = School.all
-    @faculties = Faculty.all
+    @faculties = Faculty.where.not(id: 1)
   end
 
   def update
@@ -51,8 +51,12 @@ class UsersController < ApplicationController
 
   private
 
+  def set_user_params
+    params.permit(:id)
+  end
+
   def set_user
-    @user = User.find_by(params[:id])
+    @user = User.find_by(set_user_params)
   end
 
   def user_params

@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col s12 m12 l12">
+    <%= form_tag courses_path, method: :get do |f| %>
+    <div>
+      <input id="search_course_field2" type="text" class="validate" placeholder="検索">
+      <label for="search_course_field2"></label>
+    </div>
+      <div id="course_result2">
+      </div>
+      <button class="btn waves-effect waves-light search_btn" type="submit" name="action">検索
+        <i class="material-icons right">search</i>
+      </button>
+    <% end %>
+  </div>
+</div>

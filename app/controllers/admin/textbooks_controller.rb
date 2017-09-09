@@ -4,7 +4,8 @@ class Admin::TextbooksController < AdminController
   # GET /admin/textbooks
   # GET /admin/textbooks.json
   def index
-    @admin_textbooks = Textbook.all
+    page_num = (params[:page].presence || 1).to_i
+    @admin_textbooks = Textbook.all.page(page_num).per(50)
   end
 
   # GET /admin/textbooks/1

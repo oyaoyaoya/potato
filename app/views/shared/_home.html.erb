@@ -1,22 +1,17 @@
-<div class="row">
+<div class="row hide-on-med-and-up">
   <div class="col s12 m12 l12 Search_course z-depth-1 valign-wrapper">
-    <div class="valign center Search_course__text_field__wrap input-field">
-        <!-- <h1>Potato</h1> -->
-        <p class="Home__logo--main">Potato</p>
-        <p class="Home__logo--sub">教科書をもっと自由に</p>
-        <input id="search_course_field2" type="text" class="validate hide-on-small-only" placeholder="出品/購入も授業名で検索">
-        <div id="course_result2">
-        </div>
-        <% if user_signed_in? %>
-        <% else %>
-          <div class="valign center Home__login_btn">
-            <div id="social-icon"class="clear">
-              <a href="https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=495837691826-ne219phhutpiielp0mibpjo9s969ttkh.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Fpota-to.com%2Fusers%2Fauth%2Fgoogle%2Fcallback&response_type=code&scope=email&state=5bfaade9f48976cfd115361d3605b8f489c22dd4a43cb1d9">
-                <i class="fa fa-google fa-lg"></i>大学メールでログイン
-              </a>
-            </div>
-          </div>
-        <% end %>
+     <div class="valign center Search_course__text_field__wrap">
+      <p class="Home__logo--main">Potato</p>
+      <p class="Home__logo--sub">教科書をもっと自由に</p>
+      <ul class="search-list">
+        <li>
+          <%= link_to "買いたい",{controller: "home", action: "search", key: "buy"}, {class:"btn btn-large"}%>
+          <%= form_tag  %>
+        </li>
+        <li>
+          <%= link_to "売りたい", {controller: "home", action: "search", key: "sell" }, {class:"btn btn-large amber"}  %>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
