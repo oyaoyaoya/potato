@@ -1,39 +1,40 @@
 <% provide :header, "やり取り画面" %>
 <div class="row">
-  <div class="col m3 l3 hide-on-small-only">
+  <div class="col l6 hide-on-med-and-down con_img">
+    <div class="center-align">
+      <%= image_tag('icon.jpg', { size: "300x300", alt: 'アイコン'}) %>
+    </div>
   </div>
-  <div class="col s12 m7 l7">
-    <div class="row">
-      <div class="col s12 m10 l10">
-        <ul class="collection">
-          <li class="collection-item avatar">
-            <%= image_tag("icon.png", class:"circle") %>
-            <span class="title"><%= user_name(@contract) %>さん</span>
-            <p><%= @contract.item.name %><br>
-               <%= @contract.item.price %>円
-            </p>
-          </li>
+  <div class="col s12 m12 l6">
+    <div class="row Message__top">
+      <div class="col s12 m12 l12">
+        <ul class="collection Message__top-nice">
+          <div class="m-left">
+            <li class="collection-item avatar">
+              <%= image_tag("icon.png", class:"circle") %>
+              <span class="title"><%= user_name(@contract) %>さん</span>
+              <p><%= @contract.item.name %><br>
+                <%= @contract.item.price %>円
+              </p>
+            </li>
+          </div>
+          <div class="m-right">
+            <li class="collection-item">
+              <%= link_to "詳細", item_path(@contract.item) %>
+              <%= link_to "完了", contract_path(@contract.item.id), method: :patch, class:"waves-effect waves-light btn #{ complete_status(@contract)} " %>
+            </li>
+          </div>
         </ul>
       </div>
-      <div class="col s12 l2">
-        <p>
-          <%= link_to "完了", contract_path(@contract.id), method: :patch, class:"waves-effect waves-light btn btn_vr_center btn_vr_center--contract #{ complete_status(@contract)} " %>
-        </p>
-      </div>
+
     </div>
-    <div class="row">
+    <div class="row Message__middle">
       <div class="col s12 m12 l12  Message__body">
         <ul id="message_ul">
           <%= render 'body' %>
         </ul>
       </div>
     </div>
-    <div class="row">
-      <div class="col s12 m12 l12 Message__footer">
-        <%= render 'form' %>
-      </div>
-    </div>
-  </div>
-  <div class="col l3 hide-on-small-only">
+    <%= render 'form' %>
   </div>
 </div>

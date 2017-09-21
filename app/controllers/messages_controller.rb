@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.build(message_params)
     if @message.save
-      NotificationMailer.message_notification_mail(@message, @contract).deliver
+      # NotificationMailer.message_notification_mail(@message, @contract).deliver
       respond_to do |format|
         format.json
       end

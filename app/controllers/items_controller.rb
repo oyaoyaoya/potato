@@ -25,10 +25,12 @@ class ItemsController < ApplicationController
 
   def show
     if @item.item_type == "sell"
-      @item_type = ["btn", "購入します"]
+      @item_type = ["btn", "購入"]
     else
-      @item_type = ["amber grey-text", "譲ります"]
+      @item_type = ["amber grey-text", "お譲り"]
     end
+    @comments = @item.item_comments
+    @comment = ItemComment.new
   end
 
   def edit
@@ -46,11 +48,11 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:price, :status, :item_type, :delivery).merge(course_id: @textbook.course_id, textbook_id: @textbook.id, name: @textbook.name, seller_id: current_user.id)
+    params.require(:item).permit(:price, :status, :item_type, :delivery, :description).merge(course_id: @textbook.course_id, textbook_id: @textbook.id, name: @textbook.name, seller_id: current_user.id)
   end
 
   def update_params
-    params.require(:item).permit(:price, :status, :published, :delivery)
+    params.require(:item).permit(:price, :status, :published, :delivery, :description)
   end
 
   def set_textbook
@@ -58,8 +60,7 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    items = Item.unscoped.all
-    @item = items.find_by_id(params[:id])
+    @item = Item.unscoped.all.find_by_id(params[:id])
     if @item == nil
       redirect_to root_path, alert: "アイテムが存在しません。"
     end

@@ -1,18 +1,18 @@
+<h5 class="amber-text accent-4">授業 / 書籍名で検索</h5>
 <div class="row">
-  <div class="col s12 m12 l12 search_fac">
-    <div class="input-field">
-      <%= collection_select(:search, :faculty_id, Faculty.all, :id, :name) %>
-    </div>
-    <p>から</p>
-  </div>
   <div class="col s12 m12 l12">
-    <ul class="tabs">
-      <li class="tab col s3"><a href="#test1">授業名で</a></li>
-      <li class="tab col s3"><a href="#test2">書名で</a></li>
-      <li class="tab col s3"><a href="#test3">詳しく</a></li>
-    </ul>
+    <%= form_tag courses_path, method: :get do |f| %>
+      <div class="input-field col s12">
+        <%= text_field_tag(:course_name) %>
+        <label>授業名</label>
+      </div>
+      <div class="input-field col s12">
+        <%= text_field_tag(:textbook_name) %>
+        <label>教科書名</label>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">検索
+        <i class="material-icons right">search</i>
+      </button>
+    <% end %>
   </div>
-  <div id="test1" class="col s12"><%= render 'field_for_lesson' %></div>
-  <div id="test2" class="col s12"><%= render 'field_for_book' %></div>
-  <div id="test3" class="col s12"><%= render 'field_for_detail' %></div>
 </div>

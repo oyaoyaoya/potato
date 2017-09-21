@@ -5,13 +5,13 @@ module ItemsHelper
       if item.purchased == true
         content_string << content_tag( :span, "SoldOut", class:" gray badge")
       else
-        content_string << content_tag( :span, "", class:"new badge", "data-badge-caption" => "購入可能")
+        content_string << content_tag( :span, "", class:"new badge", "data-badge-caption" => "出品中")
       end
     else
       if item.purchased == true
         content_string << content_tag( :span, "SoldOut", class:" gray badge")
       else
-        content_string << content_tag( :span, "", class:"new amber badge", "data-badge-caption" => "購入希望")
+        content_string << content_tag( :span, "", class:"white amber-text badge", "data-badge-caption" => "求む！")
       end
     end
     content_string

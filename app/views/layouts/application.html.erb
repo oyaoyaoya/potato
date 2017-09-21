@@ -12,6 +12,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
+
   <body>
     <header>
       <!-- topのヘッダー -->
@@ -36,6 +37,7 @@
         <% end %>
       </ul>
     </header>
+
     <main>
       <nav class="mobile_nav clearfix hide-on-large-only">
         <div class="nav-wrapper">
@@ -62,11 +64,6 @@
           <p class="alert alert--danger"><%= alert %></p>
         </div>
       <% end %>
-      <% unless user_signed_in? %>
-        <% if controller.controller_name == "home" && controller.action_name == "index"%>
-          <%= render partial: "shared/home" %>
-        <% end %>
-      <% end %>
       <div class="container">
         <div class="row">
           <div class="col s12 m12 l12">
@@ -74,13 +71,14 @@
               <% if (controller.controller_name == "home" && controller.action_name == "index") ||
                  (controller.controller_name == "courses" && controller.action_name == "index") ||
                   (controller.controller_name == "home" && controller.action_name == "help") %>
-                <a href="/home/search" class="btn-floating btn-large waves-effect waves-light good_nav hide-on-small-only"><%= image_tag 'Book.png' %></a>
+                <a href="/search" class="btn-floating btn-large waves-effect waves-light good_nav hide-on-small-only"><%= image_tag 'Book.png' %></a>
               <% end %>
           </div>
         </div>
       </div>
     </main>
   </body>
+
   <footer class="page-footer">
     <div class="container">
       <div class="row">

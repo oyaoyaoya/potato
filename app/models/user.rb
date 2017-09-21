@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :contracts
   has_many :messages
   has_many :items
+  has_many :item_comments
 
   has_many :contracts_of_seller, class_name: "Contract", foreign_key: :seller_id
   has_many :contracts_of_purchaser, class_name: "Contract", foreign_key: :purchaser_id
@@ -22,11 +23,9 @@ class User < ApplicationRecord
   delegate :name, to: :faculty, prefix: true
   delegate :name, to: :department, prefix: true
   def self.find_for_google_oauth2(auth)
-      binding.pry
       user = User.find_by(email: auth.info.email)
       unless user
-        user = User.create(name:     auth.info.name,
-                           provider: auth.provider,
+        user = User.create(provider: auth.provider,
                            uid:      auth.uid,
                            email:    auth.info.email,
                            token:    auth.credentials.token,

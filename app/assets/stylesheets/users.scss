@@ -20,3 +20,23 @@
 .btn__logout{
   background-color: #d65f4c;
 }
+
+#user_modal{
+  height: 80vh;
+  h4 {
+    text-align: center;
+    font-size: 1.4em;
+  }
+  div.img{
+    text-align: center;
+  }
+  .modal_close-u{
+    padding: 10px;
+  }
+  .modal-content{
+    padding-top: 0px;
+  }
+}
+.user_icon img{
+  width: 50px;
+}

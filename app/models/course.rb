@@ -17,6 +17,12 @@ class Course < ApplicationRecord
     where(faculty_id: current_user.faculty_id)
   }
   scope :search_by, -> (name) { where('name LIKE(?)', "%#{name}%") }
+  scope :search_by_textbook, -> (name) { where('textbooks.name like ?', "%#{name}%")}
+  scope :search_by_course, -> (name) { where('courses.name like ?', "%#{name}%")}
+  scope :with_t, -> { includes(:textbooks) }
+  scope :with_f, -> { includes(:faculty) }
+  scope :with_attr, -> {includes(:textbooks, :faculty)}
+  scope :joins_t, -> { joins(:textbooks) }
   scope :only_existed, -> { where(text_presence: 0)}
 
   include CsvExportable

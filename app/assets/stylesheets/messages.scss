@@ -3,12 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .Message{
+  &__top{
+    margin-bottom: 5px;
+  }
+  &__top-nice{
+    margin-bottom: 0px;
+    background-color: white;
+  }
+  &__middle{
+    margin-bottom: 5px;
+  }
   &__body{
     height: calc(100vh - 270px);
     overflow: scroll;
   }
   &__footer{
     position: relative;
+  }
+  &__form{
+    margin-bottom: 0px;
   }
 }
 
@@ -31,6 +44,52 @@
   padding: 0 12px;
   border-radius: 16px;
   background-color: #e4e4e4;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
   margin-right: 5px;
+  margin-top: 7px;
+}
+
+.message--btn{
+  width: 50px;
+  padding: 0.5rem;
+  line-height: 2rem;
+  height: 3rem;
+  margin-left: 10px;
+}
+
+#message_form{
+  input[type="text"]{
+    background-color: white;
+    border: solid 0.001px gray;
+    -webkit-justify-content: flex-end; /* Safari */
+    justify-content:         flex-end;
+  }
+}
+#message_field{
+  min-height: 43px;
+  padding: 0px 10px;
+}
+#message_ul{
+  margin-top: 0px;
+}
+
+.m-right{
+  line-height: 40px;
+  float: right;
+}
+.m-right > .collection-item{
+  padding: 10px 15px;
+}
+.collection a.collection-item{
+  color: black;
+}
+.m-left{
+  float: left;
+}
+
+.con_img{
+  line-height: 100vh;
+  .center-align > img{
+    border: solid 0.5px black;
+  }
 }

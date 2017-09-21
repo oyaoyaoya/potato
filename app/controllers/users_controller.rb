@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: %w( edit update destroy )
   before_action :set_user, only: %w( edit update show)
-  # before_action :check_user, only: %w( edit show)
+  before_action :check_user, only: %w( edit update)
 
   def show
+    if @user == current_user
+      render "my_show"
+    else
+      render "user_show"
+    end
   end
 
   def edit
@@ -11,13 +17,23 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-       @user.completed = true
-       @user.save
-       redirect_to root_path
+    if @user.completed == false
+      if @user.update(user_params)
+         @user.completed = true
+         @user.save
+         flash[:notice] = "プロフィール入力完了。お手数ですが、再度フォームを記入してください。"
+         redirect_to session[:previous_url]
+      else
+        render :edit
+      end
     else
-      render :edit
+      if @user.update(user_params)
+        redirect_to user_path(@user)
+      else
+        render :edit
+      end
     end
+
   end
 
   def faculty_select
@@ -60,7 +76,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :school_id, :department_id, :faculty_id, :grade)
+    params.require(:user).permit(:name, :school_id, :department_id, :faculty_id, :grade, :image)
   end
 
   def check_user

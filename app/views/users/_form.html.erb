@@ -3,13 +3,10 @@
       <%= f.label :name %>
       <%= f.text_field :name, class:"validate" %>
     </div>
+
     <div class="input-field" id="school_form">
       <%= f.collection_select :school_id, School.all, :id, :name, :prompt => "選択してください" %>
       <label>大学を選択してください。</label>
-    </div>
-    <div class="input-field" id="school_form">
-      <%= collection_select_tag :faculty_id, Faculty.all, :id, :name, :prompt => "" %>
-      <label></label>
     </div>
 
     <div class="input-field" id="faculty_form">
@@ -31,9 +28,16 @@
       </div>
     </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+    <div class="input-field col s12 l12 m12">
+      <select class="icons" name="user[imagee]">
+        <option value="" disabled selected>アイコンを選択してください</option>
+        <option value="0" data-icon="/assets/icon-03c8c8f841ce6d2057de263b3152c18247d0ec7e83fe6b634bdb9823bef0cc84.jpg" class="left circle">ノーマル</option>
+        <option value="1" data-icon="/assets/hoshimo-a3d12c98bc94486a36565d11f32d7d09fbdeacd1a4875ce1857b725541c450ec.png" class="left circle">干し芋</option>
+        <option value="2" data-icon="/assets/satu-bfd548c257c5fc148f675a21ce272e1906384399fa1ef6f5c86fa6e993d19c0f.jpg" class="left circle">さつまいも</option>
+        <option value="3" data-icon="/assets/dansyaku-09e0d9b73a90a5213d4def66ce2ed1c1059297a49491a422442b0c03c2186333.jpg" class="left circle">男爵いも</option>
+        <option value="4" data-icon="/assets/jagabata-f2b0f236d490e61897e0d473fa00ed30fd41d3b0eafa0b8020b8553bc1ba5a21.png" class="left circle">じゃがバター</option>
+      </select>
+      <label>Images in select</label>
     </div>
 
     <%= f.hidden_field :faculty_id %>

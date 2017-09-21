@@ -33,7 +33,7 @@
   text-align: center;
   margin-top: 30vh;
   .btn{
-    width: 80vw;
+    width: 100%;
   }
   li:nth-child(2){
     margin-top: 20px;
@@ -91,7 +91,12 @@
       font-size: 1.45em;
       font-weight: 300;
       line-height: 110%;
-      margin: 0.3rem 0 1.5rem 0;
+      margin: 0.3rem 0 0.5rem 0;
+    }
+    &--thr{
+      font-size: 1em;
+      margin-top: 0px;
+      margin-bottom: 2em;
     }
   }
   &__icons{

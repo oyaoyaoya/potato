@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406025618) do
+ActiveRecord::Schema.define(version: 20170921082002) do
 
   create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "item_id"
@@ -102,13 +102,14 @@ ActiveRecord::Schema.define(version: 20170406025618) do
     t.integer  "status"
     t.integer  "textbook_id"
     t.integer  "course_id"
-    t.boolean  "purchased",             default: false
+    t.boolean  "purchased",                 default: false
     t.integer  "seller_id"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.integer  "item_type"
-    t.boolean  "published",             default: true,  null: false
-    t.integer  "delivery",    limit: 2,                 null: false
+    t.boolean  "published",                 default: true,  null: false
+    t.integer  "delivery",    limit: 2,                     null: false
+    t.text     "description", limit: 65535
     t.index ["course_id"], name: "index_items_on_course_id", using: :btree
     t.index ["seller_id"], name: "index_items_on_seller_id", using: :btree
     t.index ["textbook_id"], name: "index_items_on_textbook_id", using: :btree
@@ -224,6 +225,7 @@ ActiveRecord::Schema.define(version: 20170406025618) do
     t.string   "meta"
     t.string   "token"
     t.integer  "user_status"
+    t.string   "image"
     t.index ["department_id"], name: "index_users_on_department_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["faculty_id"], name: "index_users_on_faculty_id", using: :btree

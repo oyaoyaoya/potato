@@ -1,0 +1,52 @@
+<div clss="row">
+  <div class="col s12 m12 l12 Course__show__item_show">
+    <div class="Course__show">
+      <h6 class="truncate"><%= course.faculty.name %>/<%= course.day_i18n %>/<%= course.period_i18n %>
+      </h6>
+      <h4 class="truncate amber-text text-darken-1 Course__show__item_show__name"><%= course.name %></h4>
+      <hr>
+      <div class="row">
+        <div class="col s12 m3 l3 Course__show__item_show--img">
+          <thead></thead>
+          <div class="center">
+            <%= image_tag("#{text_book.thumbnail == "none" ? "no_img.png" : text_book.thumbnail }", class: "text-img-#{size}") %>
+          </div>
+        </div>
+        <div class="col s12 m9 l9 Course__show__item_show--description">
+          <table class="bordered truncate">
+            <thead></thead>
+            <tbody>
+              <tr>
+              <th>書籍名</th>
+              <td><%= item.textbook.name %></td>
+              </tr>
+              <tr>
+              <th>価格</th>
+              <td><%= item.price %>円</td>
+              </tr>
+              <tr>
+              <th>保存状態</th>
+              <td><%= item.status_i18n %></td>
+              </tr>
+              <tr>
+              <th>取引方法</th>
+              <td><%= item.delivery_i18n %></td>
+              </tr>
+              <tr>
+              <th>備考</th>
+              <td><%= item.description %></td>
+              </tr>
+              <tr>
+              <th>公開状態</th>
+              <td><%= item.published ? "公開" : "非公開" %></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="right-align">
+            <p>by Google Books</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

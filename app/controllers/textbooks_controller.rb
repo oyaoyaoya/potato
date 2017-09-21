@@ -9,7 +9,6 @@ class TextbooksController < ApplicationController
 
   def create
     @textbook = Textbook.new(textbook_params)
-
     respond_to do |format|
       if @textbook.save
         course = Course.find(@textbook.course_id)

@@ -215,12 +215,13 @@ ja:
         normal: '使用感あり'
         good: '綺麗'
         very_good: '新品同様'
+        non: '特に無し'
       item_type:
         sell: '出品'
         order: '購入希望'
       delivery:
         hand: "手渡し"
-        shipping: "着払い"
+        mercari: "メルカリ経由"
         both: "どちらでも可能"
     course:
       period:

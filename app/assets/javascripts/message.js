@@ -1,7 +1,7 @@
 function buildHTML(message){
   var html = $(
     "<li class='message_li_body right-msg right-align'>" +
-      "<p class='msg-body'>" + message.body + "</p>" +
+      message.body +
     "</li>")
     return html
 };
@@ -22,14 +22,14 @@ $(function(){
         }
       },
       dataType: 'json',
-      timeout: 1000
+      timeout: 3000
     })
     .done(function(data){
       message = buildHTML(data);
       $('#message_ul').append(message);
       $message_field.val('');
     })
-    .fail(function(){
+    .fail(function(a,b,c){
       alert("please reload");
     });
     return false;

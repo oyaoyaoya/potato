@@ -10,6 +10,6 @@ $(function(){
     $('.search-wrapper').css('margin', '0')
   });
   $('#search_course_field').on('blur', function(){
-     setTimeout(removeElement, 700);
+     setTimeout(removeElement, 1000);
   });
 });

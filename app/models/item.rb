@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
-  enum status: { very_bad: 0, bad: 1, normal: 2, good:3, very_good: 4 }
+  enum status: { very_bad: 0, bad: 1, normal: 2, good:3, very_good: 4, non: 5 }
   enum item_type: { sell: 0, item_order: 1 }
-  enum delivery: { hand: 0, shipping: 1, both: 2}
+  enum delivery: { hand: 0, mercari: 1, both: 2}
 
   validates :name, presence: true
   validates :delivery, presence: true
@@ -20,6 +20,8 @@ class Item < ApplicationRecord
   has_one :contract, dependent: :destroy
   has_one :seller, through: :contract
   has_one :purchaser, through: :contract
+
+  has_many :item_comments
 
   scope :which_is_same_as_user_faculty, -> current_user {
     joins(:courses).where('courses.faculty_id = ?', current_user.faculty_id)

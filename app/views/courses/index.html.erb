@@ -1,8 +1,12 @@
-
 <% if @courses.present? %>
+  <h5>全<%= @count %>件</h5>
   <%= render partial: "shared/many_text_items", locals: { courses: @courses, size: "6"} %>
   <%= render partial: "shared/pagination", locals: { params: @courses} %>
 <% else %>
-  <p>該当する授業は存在しませんでした。</p>
-  <%= link_to "もう一度検索する",  home_search_path, class:"btn"%>
+  <div class="valign-wrapper">
+    <div class="center-align">
+      <p>該当する授業は存在しませんでした。</p>
+      <%= link_to "もう一度検索する", search_path, class:"btn"%>
+    </div>
+  </div>
 <% end %>

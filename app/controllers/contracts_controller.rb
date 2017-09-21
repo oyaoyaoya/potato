@@ -2,15 +2,15 @@ class ContractsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: %i(show create update)
   before_action :create_check_item, only: %i( create )
+  before_action :create_check_user, only: %i( create )
   before_action :check_contract, only: %i(show update)
   before_action :set_contract, only: %i( show update)
-  before_action :create_check_user, only: %i( create )
   before_action :check_user, only: %i(show update)
 
   def create
     contract = Contract.new(contract_params)
     if contract.save
-      NotificationMailer.contract_notification_mail(contract).deliver
+      # NotificationMailer.contract_notification_mail(contract).deliver
       @item.purchased = true
       @item.save
       redirect_to contract_path
@@ -28,10 +28,10 @@ class ContractsController < ApplicationController
   def update
     if @contract.status == "uncompleted"
       @contract.update(status: "pre_completed", complete_id: current_user.id)
-      redirect_to contract_path(@contract.id)
+      redirect_to contract_path(@contract.item.id)
     elsif @contract.status == "pre_completed"
       @contract.update(status: "completed" )
-      redirect_to contract_path(@contract.id)
+      redirect_to contract_path(@contract.item.id)
     else
       redirect_to root_path
     end

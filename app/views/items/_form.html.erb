@@ -4,7 +4,7 @@
       <%= f.label :name, html: {class: "Form__label"} %>
     </div>
     <div class="input-field col s12">
-      <%= f.select :price, [["無料で譲る", "0"], ["500円", "500"], ["1000円", "1000"], ["1500円", "1500"], ["2000円", "2000"]], :prompt => "選択してください" %>
+      <%= f.select :price, [["無料で", "0"], ["500円", "500"], ["1000円", "1000"], ["1500円", "1500"], ["2000円", "2000"], ["芋100g", "100"], ["芋150g", "150"]], :prompt => "選択してください" %>
       <label class="Form__label">値段</label>
      </div>
     <div class="input-field col s12">
@@ -15,6 +15,11 @@
       <%= f.select :delivery, Item.deliveries_i18n.invert, :prompt => "選択してください" %>
       <label class="Form__label">取引方法</label>
     </div>
+    <div class="input-field col s12">
+      <%= f.text_field :description, placeholder: "メルカリのURLや条件など記入してください" %>
+      <label class="Form__label">備考など</label>
+    </div>
+
     <% if action_name == "edit" %>
       <div class="switch">
         <label class="Form__label">
@@ -33,9 +38,13 @@
   <% else %>
     <div class="btn user_unlogin">出品</div>
     <div id="user_modal" class="modal">
+      <div class="modal_close-u"><i class="material-icons">close</i></div>
       <div class="modal-content">
-        <h4>出品するためにはログイン/会員登録が必要です。</h4>
-        <p>Googleアカウントでログイン</p>
+        <h4>この先に進むためには</br>ログイン/会員登録が必要です。
+        </h4>
+        <div class="img">
+          <%= image_tag('icon.jpg', { size: "200x200", alt: 'アイコン'}) %>
+        </div>
       </div>
       <div class="valign center Home__login_btn">
         <div id="social-icon"class="clear">
@@ -43,9 +52,6 @@
             <i class="fa fa-google fa-lg"></i>大学メールでログイン
           <% end %>
         </div>
-      </div>
-      <div class="modal-footer">
-        <p class="btn modal_close-u"></p>
       </div>
     </div>
   <% end %>

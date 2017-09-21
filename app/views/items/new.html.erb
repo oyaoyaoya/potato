@@ -1,6 +1,6 @@
 <% if @item.item_type == "sell" %>
-<h4 class="truncate">出品フォーム</h4>
+　　<h4 class="truncate">出品フォーム</h4>
 <% else %>
-<h4>購入希望フォーム</h4>
+　　<h4>求むフォーム</h4>
 <% end %>
 <%= render partial: "form", locals: { textbook: @textbook, item: @item } %>

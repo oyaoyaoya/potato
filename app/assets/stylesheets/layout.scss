@@ -27,7 +27,6 @@ header, main, footer {
      }
    }
 .container {
-  margin-top: 70px;
   @media only screen and (min-width: 993px){
     width: 95%;
   }
@@ -107,7 +106,6 @@ header, main, footer {
   font-weight: 200;
   text-align: center;
   color: #fff;
-  margin-top: 60px;
   margin-bottom: 0px;
   &--success{
     background-color: #38aef0;
@@ -115,6 +113,9 @@ header, main, footer {
   &--danger{
     background-color: #d65f4c;
   }
+}
+p .alert{
+
 }
 
 .nav__list--empty{
@@ -130,6 +131,31 @@ header, main, footer {
 #search_course_field2{
 }
 
+#search_course_field2 {
+    color: white;
+}
+#search_course_field2::-webkit-input-placeholder {
+    color: white;
+    font-weight: normal;
+}
+#search_course_field2:-ms-input-placeholder {
+    color: white;
+    font-weight: normal;
+}
+#search_course_field2::-moz-placeholder {
+    color: white;
+    font-weight: normal;
+}
+
+#course_result2{
+  height: 100%;
+}
+
+
+.home_btn{
+  margin: 20px;
+  width: 100px;
+}
 .nav-wrapper{
   padding-left: 15px;
 }
@@ -174,4 +200,8 @@ header, main, footer {
   @include max-screen($breakpoint-mobile) {
      margin-top: 60px;
   }
+}
+
+.page-footer{
+  margin-top: 0px;
 }

@@ -1,17 +1,15 @@
-<div class="row hide-on-med-and-up">
-  <div class="col s12 m12 l12 Search_course z-depth-1 valign-wrapper">
-     <div class="valign center Search_course__text_field__wrap">
-      <p class="Home__logo--main">Potato</p>
-      <p class="Home__logo--sub">教科書をもっと自由に</p>
-      <ul class="search-list">
-        <li>
-          <%= link_to "買いたい",{controller: "home", action: "search", key: "buy"}, {class:"btn btn-large"}%>
-          <%= form_tag  %>
-        </li>
-        <li>
-          <%= link_to "売りたい", {controller: "home", action: "search", key: "sell" }, {class:"btn btn-large amber"}  %>
-        </li>
-      </ul>
+<div>
+  <input id="search_course_field2" type="text" class="validate" placeholder="出品/購入も授業名で検索">
+  <label for="search_course_field2"></label>
+</div>
+<div id="course_result2">
+</div>
+<% unless user_signed_in? %>
+  <div class="valign center Home__login_btn">
+    <div id="social-icon"class="clear">
+      <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+        <i class="fa fa-google fa-lg"></i>大学メールでログイン
+      <% end %>
     </div>
   </div>
-</div>
+<% end %>

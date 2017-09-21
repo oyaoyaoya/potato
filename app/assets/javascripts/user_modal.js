@@ -6,7 +6,7 @@ $(document).ready(function () {
 });
 
 $(function(){
-    // $('.modal_close-u').on('click', function(){
-    //     $('#user_modal').modal('close');
-    // });
+    $('.modal_close-u').on('click', function(){
+        $('#user_modal').modal('close');
+    });
 });

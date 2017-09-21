@@ -2,24 +2,12 @@
   <div class="col s12 m12 l12">
     <%= form_tag courses_path, method: :get do |f| %>
       <div class="input-field col s12">
-        <%= text_field(:course, :name) %>
+        <%= text_field_tag(:course_name) %>
         <label>授業名</label>
       </div>
       <div class="input-field col s12">
-        <%= text_field(:course, :textbook_name) %>
+        <%= text_field_tag(:textbook_name) %>
         <label>教科書名</label>
-      </div>
-      <div class="input-field col s12">
-        <%= collection_select(:course, :faculty_id, Faculty.all, :id, :name, :prompt => "選択してください") %>
-        <label>学部名</label>
-      </div>
-      <div class="input-field col s12">
-        <%= select :course, :day, Course.days_i18n.invert, :prompt => "選択してください" %>
-        <label class="Form__label">曜日</label>
-      </div>
-      <div class="input-field col s12">
-        <%= select :course, :period, Course.periods_i18n.invert, :prompt => "選択してください" %>
-        <label class="Form__label">時限</label>
       </div>
       <button class="btn waves-effect waves-light" type="submit" name="action">検索
         <i class="material-icons right">search</i>

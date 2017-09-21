@@ -1,8 +1,29 @@
-<% if item.purchased == false %>
-  <%= link_to contract_path, method: :post, class:"btn waves-effect waves-light #{item_type[0]}", data:{confirm: '購入しますか？', disable_with: "通信中"} do%>
-  　<%= item_type[1] %>
-    <i class="material-icons right">send</i>
+<% if user_signed_in?%>
+  <% if item.purchased == false %>
+    <%= link_to contract_path, method: :post, class:"btn waves-effect waves-light #{item_type[0]}", data:{confirm: "#{@item_type}しますか？", disable_with: "通信中"} do%>
+    　<%= item_type[1] %>
+      <i class="material-icons right">send</i>
+    <% end %>
+  <% else %>
+    <p class="btn waves-effect grey waves-light">購入済み</p>
   <% end %>
 <% else %>
-  <p class="btn waves-effect grey waves-light">購入済み</p>
+  <div class="btn user_unlogin <%= item_type[0] %>"><%= @item_type[1] %>します</div>
+  <div id="user_modal" class="modal">
+    <div class="modal_close-u"><i class="material-icons">close</i></div>
+    <div class="modal-content">
+      <h4><%= @item_type[1] %>するためには</br>ログイン/会員登録が必要です。
+      </h4>
+      <div class="img">
+        <%= image_tag('icon.jpg', { size: "200x200", alt: 'アイコン'}) %>
+      </div>
+    </div>
+    <div class="valign center Home__login_btn">
+      <div id="social-icon"class="clear">
+        <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+          <i class="fa fa-google fa-lg"></i>大学メールでログイン
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>

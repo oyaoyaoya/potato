@@ -11,58 +11,38 @@
           <p class="truncate cource__name"><%= text_book.name %></p>
           <hr>
           <div class="row">
-            <div class="col s12 m3 l3 Course__show__item_show--img">
+            <div class="col s12 m3 l12 Course__show__item_show--img">
               <thead></thead>
               <div class="row">
-                <div class="col m12 l12 s12">
+                <div class="col m12 l3 s12">
                   <div class="center-align">
                     <%= image_tag("#{text_book.thumbnail == "none" ? "no_img.png" : text_book.thumbnail }", class: "text-img-#{size}") %>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col s6 m12 l12 hide-on-small-only">
+                <div class="col m12 l6 hide-on-small-only">
                     <%= link_to "出品", new_textbook_item_path(text_book.id, item_type: 0), class:"waves-effect waves-light btn bbtn" %>
                     <%= link_to "求む", new_textbook_item_path(text_book.id, item_type: 1), class:"waves-effect waves-light btn amber bbtn"%>
+                    <%= link_to "詳細", course_path(course.id), class:"waves-effect waves-light btn bbtn white blue-text text-darken-2" %>
+                    <% if course.items.count == 0 %>
+                      <p class="right">未出品</p>
+                    <% else %>
+                      <%= link_to "#{course.items.count}出品", course_path(course.id), class:"blue-text text-darken-2 right" %>
+                    <% end %>
                 </div>
               </div>
-            </div>
-            <div class="col s12 m9 l9 Course__show__item_show--description">
-              <!-- <table class="bordered truncate">
-                <thead></thead> -->
-                  <!-- <tr> -->
-                  <!-- <th>出品平均価格</th> -->
-                  <!-- <td>Comming soon!</td> -->
-                  <!-- <td><%# items.inject(0){|r, i| r+=i.price}/items.size %>円</td> -->
-                  <!-- </tr> -->
-                  <!-- <tr>
-                  <th>Amazon</th>
-                  <td><%= link_to "ページに飛ぶ", "https://www.amazon.co.jp/s/ref=sr_nr_n_0?fst=as%3Aoff&keywords=#{text_book.name}+#{text_book.publisher}&ie=UTF8&qid=1491317462&rnid=2321267051", target: ["_blank"]  %></td>
-                  </tr>
-                </tbody>
-              </table> -->
             </div>
           </div>
           <div class="row hide-on-med-and-up">
             <div class="col s12 hide-on-med-and-up">
                 <%= link_to "出品", new_textbook_item_path(text_book.id, item_type: 0), class:"waves-effect waves-light btn bbtn" %>
                 <%= link_to "求む", new_textbook_item_path(text_book.id, item_type: 1), class:"waves-effect waves-light btn amber bbtn"%>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12 m12 l12 Course__show__item_show--list">
-              <div class="col s12">
-                <% text_book.items.each do |item| %>
-                <div class="collection">
-                  <%= link_to item_path(item), class:"collection-item" do %>
-                    <%= item.price%>円
-                    <%= item_tag(item) %>
-                  <% end %>
-                </div>
+                <%= link_to "詳細", course_path(course.id), class:"waves-effect waves-light btn bbtn white blue-text text-darken-2" %>
+                <% if course.items.count == 0 %>
+                  <p class="right">未出品</p>
+                <% else %>
+                  <p class="blue-text text-darken-2 right"><%= course.items.count %>出品</p>
                 <% end %>
-              </div>
             </div>
-             <%= back_link(course) %>
           </div>
         </div>
       </div>

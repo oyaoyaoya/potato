@@ -49,4 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: potato_pro
+    database: <%= ENV['POTATO_DATABASE_NAME'] %>
+    username: <%= ENV['POTATO_DATABASE_USER_NAME'] %>
+    password: <%= ENV['POTATO_DATABASE_PASSWORD'] %>
+    host: <%= ENV['POTATO_DATABASE_HOST'] %>

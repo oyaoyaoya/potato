@@ -34,15 +34,6 @@
               <td><div class="scroll"><%= text_book.explanation %></div></td>
               </tr>
               <tr>
-              <th>価格</th>
-              <td>Comming soon!</td>
-              </tr>
-              <tr>
-              <th>出品平均価格</th>
-              <td>Comming soon!</td>
-              <!-- <td><%# items.inject(0){|r, i| r+=i.price}/items.size %>円</td> -->
-              </tr>
-              <tr>
               <th>Amazon</th>
               <td><%= link_to "ページに飛ぶ", "https://www.amazon.co.jp/s/ref=sr_nr_n_0?fst=as%3Aoff&keywords=#{text_book.name}+#{text_book.publisher}&ie=UTF8&qid=1491317462&rnid=2321267051", target: ["_blank"] %></td>
               </tr>
@@ -67,7 +58,7 @@
           </div>
         </div>
          <%# back_link(course) %>
-         <%= link_to "学部授業一覧に戻る",courses_path(faculty_id: course.faculty_id), class:"back_link waves-effect waves-light btn white blue-text text-darken-2" %>
+         <%= link_to "戻る", :back, class:"back_link waves-effect waves-light btn white blue-text text-darken-2" %>
       </div>
     </div>
   </div>

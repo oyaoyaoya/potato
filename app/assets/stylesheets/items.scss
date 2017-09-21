@@ -13,6 +13,7 @@
 }
 
 .bbtn{
+  margin: 10px 0px;
   width: 110%;
   padding: 0 1.5rem;
   @include max-screen($breakpoint-mobile) {

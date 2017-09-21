@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :textbooks, only: %w( new create), shallow: true do
     resources :items, except: %w( index destroy) do
       member do
+        resource :item_comments, only: :create
         resource :contract, only: %w( create show update )
       end
     end
@@ -40,4 +41,5 @@ Rails.application.routes.draw do
   end
   get '/admin' => "admin#index"
   root 'home#index'
+  match "/auth/:provider/callback" => "sessions#user_sign_in_up", :via => [:get, :post]
 end
