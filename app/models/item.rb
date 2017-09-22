@@ -15,7 +15,7 @@ class Item < ApplicationRecord
 
   belongs_to :course
   belongs_to :textbook
-  belongs_to :user
+  belongs_to :sell_user, class_name: 'User', :foreign_key => 'seller_id'
 
   has_one :contract, dependent: :destroy
   has_one :seller, through: :contract

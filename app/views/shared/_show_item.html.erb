@@ -17,6 +17,10 @@
             <thead></thead>
             <tbody>
               <tr>
+              <th>出品者</th>
+              <td><%= link_to item.sell_user.name, user_path(item.sell_user.id) %></td>
+              </tr>
+              <tr>
               <th>書籍名</th>
               <td><%= item.textbook.name %></td>
               </tr>
