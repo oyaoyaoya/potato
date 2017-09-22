@@ -50,7 +50,7 @@
             <% text_book.items.each do |item| %>
             <div class="collection">
               <%= link_to item_path(item), class:"collection-item" do %>
-              <%= item.show_price %>
+              <%= render partial: "show_price", locals: {item: item} %>
               <%= item_tag(item) %>
               <% end %>
             </div>
