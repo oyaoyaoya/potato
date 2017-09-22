@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col l6 m12 s12">
     <div class="collection">
-      <a href="#!" class="collection-item"><span class="user_icon"><%= curernt_user.show_icon(current_user.image) %></span>
+      <a href="#!" class="collection-item"><span class="user_icon"><%= current_user.show_icon(current_user.image) %></span>
       <a href="http://www.google.co.jp/search?hl=ja&source=hp&q=<%= current_user.name%>イケメン説" class="collection-item", target=["_blank"]>ニックネーム：<%= current_user.name %></a>
       <a href="" class="collection-item">メールアドレス：<%= current_user.email %></a>
       <a href="http://www.google.co.jp/search?hl=ja&source=hp&q=<%= current_user.school.try!(:name)%> 年収" class="collection-item", target=["_blank"]>大学：<%= current_user.school.try!(:name) %></a>
