@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   validates_associated :textbook, :course, :user
   # validates :seller_id, presence: true
   validates :item_type, presence: true
-  validates :status, presence: true
+  validates :status, presence: true, if: :for_sell?
 
   belongs_to :course
   belongs_to :textbook
@@ -28,6 +28,10 @@ class Item < ApplicationRecord
   }
   default_scope { where(published: true)}
   # default_scope { order(created_at: desc) }
+
+  def for_sell?
+    item_type == "sell"
+  end
 #やりたいこと→関連テーブルのfaculty_idが自分のfaculty_id
   class << self
     def localed_statuses

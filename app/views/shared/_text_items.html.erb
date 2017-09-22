@@ -50,7 +50,7 @@
             <% text_book.items.each do |item| %>
             <div class="collection">
               <%= link_to item_path(item), class:"collection-item" do %>
-              <%= item.price%>円
+              <%= item.show_price %>
               <%= item_tag(item) %>
               <% end %>
             </div>

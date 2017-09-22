@@ -1,0 +1,41 @@
+<h3>求む！</h3>
+<%= form_for([@textbook, @item]) do |f| %>
+  <div class="input-field col s12 form_field">　
+    <%= f.text_field :name, disabled: "true"%>
+    <%= f.label :name, html: {class: "Form__label"} %>
+  </div>
+  <div class="input-field col s12">
+    <%= f.select :delivery, Item.deliveries_i18n.invert, :prompt => "選択してください" %>
+    <label class="Form__label">取引方法</label>
+  </div>
+  <div class="input-field col s12">
+    <%= f.text_field :description, placeholder: "備考があれば、記入してください。(メルカリURLや取引条件など)" %>
+    <label class="Form__label">備考など</label>
+  </div>
+  <%= f.hidden_field :course_id %>
+  <%= f.hidden_field :textbook_id %>
+  <%= f.hidden_field :item_type, value: @item.item_type %>
+  <%= f.hidden_field :price, value: 9999 %>
+  <% if user_signed_in?%>
+    <%= f.submit "#{controller.action_name == "edit" ? "update" : "求む"}", class:"waves-effect waves-light btn", data:{disable_with: "通信中"} %>
+  <% else %>
+    <div class="btn user_unlogin">出品</div>
+    <div id="user_modal" class="modal">
+      <div class="modal_close-u"><i class="material-icons">close</i></div>
+      <div class="modal-content">
+        <h4>この先に進むためには</br>ログイン/会員登録が必要です。
+        </h4>
+        <div class="img">
+          <%= image_tag('icon.jpg', { size: "200x200", alt: 'アイコン'}) %>
+        </div>
+      </div>
+      <div class="valign center Home__login_btn">
+        <div id="social-icon"class="clear">
+          <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+            <i class="fa fa-google fa-lg"></i>大学メールでログイン
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

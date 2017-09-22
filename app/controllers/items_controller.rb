@@ -7,6 +7,9 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.item_type = params[:item_type].to_i
     @item.name = @textbook.name
+    if @item.item_type == "item_order"
+      render "for_want"
+    end
   end
 
   def create
