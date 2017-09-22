@@ -2,7 +2,6 @@
 <div class="row">
   <div class="col l6 m12 s12">
     <div class="collection">
-      <a href="#!" class="collection-item"><span class="user_icon"><%= @user.show_icon(@user.image) %></span>
       <a href="" class="collection-item", target=["_blank"]>ニックネーム：<%= @user.name %></a>
       <a href="http://www.google.co.jp/search?hl=ja&source=hp&q=<%= current_user.school.try!(:name)%> 年収" class="collection-item", target=["_blank"]>大学：<%= @user.school.try!(:name) %></a>
       <a href="" class="collection-item" >学部：<%= @user.faculty.try!(:name) %></a>
