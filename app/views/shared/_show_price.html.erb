@@ -1,1 +1,5 @@
-<%= item.show_price %>
+<% if item.price == 9999 %>
+交渉
+<% else %>
+<%= item.price %>
+<% end %>
