@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   def store_location
    # 今回の場合は、 /users/sign_in , /users/sign_up, /users/password にアクセスしたとき、ajaxでのやりとりはsessionには保存しない。
     if ((request.fullpath.match(/textbooks\/\d*\/items\/new/) && !request.xhr?) || \
-        (request.fullpath.match(/items\/\d*/) && !request.xhr?)
+        (request.fullpath.match(/items\/\d*/) && !request.xhr?) || \
+        (request.fullpath == "/" && !request.xhr?)
         ) # don't store ajax calls
       session[:previous_url] = request.fullpath
     end
