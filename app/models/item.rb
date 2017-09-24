@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validates :price, numericality: {
     only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 10000
   }
-  validates_associated :textbook, :course, :user
+  validates_associated :textbook, :course
   # validates :seller_id, presence: true
   validates :item_type, presence: true
   validates :status, presence: true, if: :for_sell?
